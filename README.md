@@ -5,10 +5,6 @@
  that is socially engaging, intuitive,
  and requires little setup.
  
- --------------------------------------------------------------------------
- As a player, you are tasked with gauging the opinion of your opponents
- using body language, inside knowledge, and reverse psychology.
- Do you know your friends better than they know themselves?
- 
- ---------------------------------------------------------------------------
+As a player, you are tasked with gauging the opinion of your opponents using body language, inside knowledge, and reverse psychology. Do you know your friends better than they know themselves?
+
  [Rules](https://github.com/CS-262wingdings/client/wiki/Instructions)
