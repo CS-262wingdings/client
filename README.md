@@ -2,10 +2,10 @@
  
  ***For groups of 3 or more people who want to play something casual:***
  
- Using just one device,
  Pigeon Poll is a party game
  that is socially engaging, intuitive,
- and requires little setup.
+ and requires little setup. While other party games might require each player to have a phone,
+ our game only needs one device.
  
 As a player, you are tasked with gauging the opinion of your opponents using body language, inside knowledge, and reverse psychology. Do you know your friends better than they know themselves?
 
