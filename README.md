@@ -7,4 +7,4 @@
  
 As a player, you are tasked with gauging the opinion of your opponents using body language, inside knowledge, and reverse psychology. Do you know your friends better than they know themselves?
 
- [Rules](https://github.com/CS-262wingdings/client/wiki/Instructions)
+ ***[Rules](https://github.com/CS-262wingdings/client/wiki/Instructions)***
