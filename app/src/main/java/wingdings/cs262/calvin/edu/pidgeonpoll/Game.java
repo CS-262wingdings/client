@@ -51,4 +51,8 @@ public class Game {
         return instance;
     }
 
+    public String getCurrentPlayer() {
+        return names.get(currentPlayer);
+    }
+
 }
