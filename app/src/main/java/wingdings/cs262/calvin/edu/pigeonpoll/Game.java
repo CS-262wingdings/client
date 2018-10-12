@@ -1,18 +1,36 @@
-package wingdings.cs262.calvin.edu.pidgeonpoll;
+package wingdings.cs262.calvin.edu.pigeonpoll;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
+    // Stores the names of all players in clockwise order
     public ArrayList<String> names;
-    public HashMap<String, Integer> points;     //Total points in the game
-    public HashMap<String, Integer> roundPoints;    //Points for this round
-    public int firstPlayer;     //Stores whose round it is
-    public int currentPlayer;       //Storing who is asking the question
-    public int roundsPlayed;
-    public int rounds;      //Total rounds
 
+    // Stores the overall points for each player, where the key is each player's
+    // name in "names", and the values are the points for that player
+    public HashMap<String, Integer> points;
+
+    // Stores how many votes each player has received this round, mapping the player's
+    // name to the votes.
+    public HashMap<String, Integer> votesPerPlayer;
+
+    // Keeps track of who asked the question by storing the index of that player
+    public int firstPlayer;
+
+    // Keeps track of who has the phone currently by storing the index of that player
+    public int currentPlayer;
+
+    // Stores the number of completed rounds
+    public int roundsPlayed;
+
+    // Stores how many rounds the game will last:
+    // A round is a cycle of every player asking a question
+    public int rounds;
+
+    // Stores this Game's instance
     private static Game instance;
+
 
     public Game(int rounds) {
         names = new ArrayList<String>();
@@ -33,7 +51,7 @@ public class Game {
     }
 
     public void startRound() {
-        roundPoints = new HashMap<String, Integer>();
+        votesPerPlayer = new HashMap<String, Integer>();
     }
 
     public void endTurn() {

@@ -1,4 +1,4 @@
-package wingdings.cs262.calvin.edu.pidgeonpoll;
+package wingdings.cs262.calvin.edu.pigeonpoll;
 
 import org.junit.Test;
 
