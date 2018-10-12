@@ -1,4 +1,4 @@
-package wingdings.cs262.calvin.edu.pidgeonpoll;
+package wingdings.cs262.calvin.edu.pigeonpoll;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("wingdings.cs262.calvin.edu.pidgeonpoll", appContext.getPackageName());
+        assertEquals("wingdings.cs262.calvin.edu.pigeonpoll", appContext.getPackageName());
     }
 }
