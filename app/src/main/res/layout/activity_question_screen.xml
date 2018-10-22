@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/question_layout"
     tools:context=".QuestionScreen">
 
     <TextView
@@ -25,28 +26,5 @@
         android:layout_height="wrap_content"
         android:text="@string/question_select_text"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/question_1_button"
-        android:onClick="questionSelected"
-        android:tag="1"
-        android:text=""/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/question_2_button"
-        android:onClick="questionSelected"
-        android:tag="2"
-        android:text=""/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/question_3_button"
-        android:onClick="questionSelected"
-        android:tag="3"
-        android:text=""/>
 
 </LinearLayout>

@@ -5,36 +5,37 @@ import java.util.HashMap;
 
 public class Game {
     // Stores the names of all players in clockwise order
-    public ArrayList<String> names;
+    ArrayList<String> names;
 
     // Stores the overall points for each player, where the key is each player's
     // name in "names", and the values are the points for that player
-    public HashMap<String, Integer> points;
+    private HashMap<String, Integer> points;
 
     // Stores how many votes each player has received this round, mapping the player's
     // name to the votes.
-    public HashMap<String, Integer> votesPerPlayer;
+    private HashMap<String, Integer> votesPerPlayer;
 
     // Keeps track of who asked the question by storing the index of that player
-    public int firstPlayer;
+    int firstPlayer;
 
     // Keeps track of who has the phone currently by storing the index of that player
-    public int currentPlayer;
+    int currentPlayer;
 
     // Stores the number of completed rounds
-    public int roundsPlayed;
+    int roundsPlayed;
 
     // Stores how many rounds the game will last:
     // A round is a cycle of every player asking a question
-    public int rounds;
+    int rounds;
 
     // Stores this Game's instance
     private static Game instance;
 
 
-    public Game(int rounds) {
+    Game(int rounds) {
         names = new ArrayList<String>();
         points = new HashMap<String, Integer>();
+        votesPerPlayer = new HashMap<String, Integer>();
         firstPlayer = 0;
         currentPlayer = 0;
         roundsPlayed = 0;
@@ -45,7 +46,7 @@ public class Game {
         return names.size();
     }
 
-    public void addName(String name) {
+    void addName(String name) {
         names.add(name);
         points.put(name, 0);
     }
@@ -69,7 +70,11 @@ public class Game {
         return instance;
     }
 
-    public String getCurrentPlayer() {
+    public void vote( String playerName) {
+        votesPerPlayer.put(playerName, votesPerPlayer.get(playerName) + 1);
+    }
+
+    String getCurrentPlayer() {
         return names.get(currentPlayer);
     }
 

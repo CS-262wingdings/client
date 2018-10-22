@@ -1,16 +1,17 @@
 package wingdings.cs262.calvin.edu.pigeonpoll;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class QuestionScreen extends AppCompatActivity {
 
-    private TextView questionPrompt;
-    private Button button1, button2, button3;
+    private static int NUM_OPTIONS = 3;
 
     private Game game;
     private QuestionManager qManager;
@@ -25,35 +26,53 @@ public class QuestionScreen extends AppCompatActivity {
         game = Game.getInstance();
         qManager = QuestionManager.getInstance();
 
-        questionPrompt = findViewById(R.id.prompt);
+        TextView questionPrompt = findViewById(R.id.prompt);
         questionPrompt.setText(game.getCurrentPlayer() + ", enter your question:");
 
         getQuestions();
 
-        button1 = findViewById(R.id.question_1_button);
-        button1.setText(currentQuestions[0].text);
-
-        button2 = findViewById(R.id.question_2_button);
-        button2.setText(currentQuestions[1].text);
-
-        button3 = findViewById(R.id.question_3_button);
-        button3.setText(currentQuestions[2].text);
+        for (int i = 0; i < NUM_OPTIONS; i++) {
+            Button questionOption = makeButton(currentQuestions[i]);
+            ((LinearLayout)findViewById(R.id.question_layout)).addView(questionOption);
+        }
     }
 
     public void myQuestionEntered(View view) {
+        Intent i = new Intent(this, QuestionAnswerScreen.class);
+        i.putExtra("question", "custom");
+        startActivity(i);
+        finish();
     }
 
 
-    public void questionSelected(View view) {
+    private Button makeButton(final Question question) {
+        Button b = new Button(this);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qManager.askQuestion(question);
+
+                Intent i = new Intent(getApplicationContext(), QuestionAnswerScreen.class);
+                i.putExtra("question", question.text);
+                startActivity(i);
+                finish();
+            }
+        });
+        b.setText(question.text);
+        return b;
     }
 
     private void getQuestions() {
         if (currentQuestions == null) {
             currentQuestions = new Question[3];
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUM_OPTIONS; i++) {
             currentQuestions[i] = qManager.getRandomQuestion();
             Log.d("QuestionTest: ", currentQuestions[i].text);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
