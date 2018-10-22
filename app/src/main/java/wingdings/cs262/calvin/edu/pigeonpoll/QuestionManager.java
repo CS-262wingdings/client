@@ -16,6 +16,9 @@ public class QuestionManager {
     // Stores the questions which have been used this game already
     private ArrayList<Question> usedQuestions;
 
+    // Stores the questions which have actually been asked
+    private ArrayList<Question> askedQuestions;
+
     private Random random;
 
     // Stores this QuestionManager's instance, to make it a singleton
@@ -25,6 +28,7 @@ public class QuestionManager {
         questions = new ArrayList<Question>();
         enabledQuestions = new ArrayList<Question>();
         usedQuestions = new ArrayList<Question>();
+        askedQuestions = new ArrayList<Question>();
 
         random = new Random();
 
@@ -76,7 +80,7 @@ public class QuestionManager {
 
     // Returns a question to be used by the game
     // This should only draw from the enabled pool
-    public Question getRandomQuestion() {
+    Question getRandomQuestion() {
         // TODO: replace with throw exception
         if (enabledQuestions.size() == 0) {
             int randomIndex = random.nextInt(usedQuestions.size());
@@ -91,5 +95,13 @@ public class QuestionManager {
 
     public ArrayList<Question> getAllQuestions() {
         return questions;
+    }
+
+    void askQuestion( Question q) {
+        askedQuestions.add(q);
+    }
+
+    public ArrayList<Question> getAskedQuestions() {
+        return askedQuestions;
     }
 }

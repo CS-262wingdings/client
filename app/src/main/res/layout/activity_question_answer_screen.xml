@@ -1,37 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".QuestionAnswerScreen">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Enter Names" />
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/name_input" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Name"
-        android:onClick="nameEnter"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Finished"
-        android:onClick="done"/>
+        android:id="@+id/question_label"/>
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,13 +23,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/name_list"
             android:orientation="vertical"
-            tools:context=".MainActivity">
+            tools:context=".QuestionAnswerScreen">
 
         </LinearLayout>
 
     </ScrollView>
 
 
-
 </LinearLayout>
-
