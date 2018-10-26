@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuestionScreen" />
-        <activity android:name=".QuestionAnswerScreen"></activity>
+        <activity android:name=".QuestionAnswerScreen" />
+        <activity android:name=".PassScreen1"></activity>
     </application>
 
 </manifest>
