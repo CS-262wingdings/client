@@ -39,7 +39,8 @@ public class QuestionScreen extends AppCompatActivity {
 
     public void myQuestionEntered(View view) {
         Intent i = new Intent(this, QuestionAnswerScreen.class);
-        i.putExtra("question", "custom");
+        //i.putExtra("question", "custom");
+        game.setQuestion(null);
         startActivity(i);
         finish();
     }
@@ -53,7 +54,8 @@ public class QuestionScreen extends AppCompatActivity {
                 qManager.askQuestion(question);
 
                 Intent i = new Intent(getApplicationContext(), QuestionAnswerScreen.class);
-                i.putExtra("question", question.text);
+                //i.putExtra("question", question.text);
+                game.setQuestion(question.text);
                 startActivity(i);
                 finish();
             }

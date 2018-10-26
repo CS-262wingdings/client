@@ -31,6 +31,8 @@ public class Game {
     // Stores this Game's instance
     private static Game instance;
 
+    //Stores the current question
+    String currentQuestion;
 
     Game(int rounds) {
         names = new ArrayList<String>();
@@ -71,11 +73,19 @@ public class Game {
     }
 
     public void vote( String playerName) {
-        votesPerPlayer.put(playerName, votesPerPlayer.get(playerName) + 1);
+        if(votesPerPlayer.containsValue(playerName)) {
+            votesPerPlayer.put(playerName, votesPerPlayer.get(playerName) + 1);
+        }else{
+            votesPerPlayer.put(playerName,1);
+        }
     }
 
     String getCurrentPlayer() {
         return names.get(currentPlayer);
+    }
+
+    public void setQuestion(String q){
+        currentQuestion = q;
     }
 
 }
