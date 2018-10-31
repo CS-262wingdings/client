@@ -1,5 +1,6 @@
 package wingdings.cs262.calvin.edu.pigeonpoll;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
 
     private Game game;
     private LinearLayout nameList;
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView nameView = new TextView(this);
                 nameView.setText(input);
 
-                Button closeButton = makeCloseButton(nameLayout, input);
+                RadioButton closeButton = makeCloseButton(nameLayout, input);
 
                 nameLayout.addView(closeButton);
                 nameLayout.addView(nameView);
@@ -64,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private Button makeCloseButton(final LinearLayout nameView, final String name) {
-        final Button closeButton = new Button(this);
+    private RadioButton makeCloseButton(final LinearLayout nameView, final String name) {
+        final RadioButton closeButton = new RadioButton(this);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

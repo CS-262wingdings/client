@@ -27,7 +27,7 @@ public class QuestionScreen extends AppCompatActivity {
         qManager = QuestionManager.getInstance();
 
         TextView questionPrompt = findViewById(R.id.prompt);
-        questionPrompt.setText(game.getCurrentPlayer() + ", enter your question:");
+        questionPrompt.setText(game.getCurrentPlayer() + ", Ask a question out loud OR Pick one !");
 
         getQuestions();
 
