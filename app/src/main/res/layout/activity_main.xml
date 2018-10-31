@@ -6,32 +6,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/standard"
+    android:background="@color/pigeonPollPrimary"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Enter Names" />
+
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/standard"
+        android:hint="Enter your name here"
         android:id="@+id/name_input" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Name"
-        android:onClick="nameEnter"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Finished"
-        android:onClick="done"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="nameEnter"
+            android:background="@drawable/border"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Enter Name" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:layout_weight="1"
+            android:onClick="done"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Finished" />
+
+    </LinearLayout>
+
+
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,10 +53,11 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/name_list"
             android:orientation="vertical"
+            android:textColor="@color/colorPrimaryDark"
             tools:context=".MainActivity">
 
         </LinearLayout>

@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/pigeonPollPrimary"
     tools:context=".QuestionAnswerScreen">
 
     <TextView
+        android:id="@+id/question_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/question_label"/>
+        android:textColor="@color/colorPrimaryDark" />
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"

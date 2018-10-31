@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#31175F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="pigeonPollPrimary">#FFF9EA</color>
+    <color name="pigeonPollGold">#FCC941</color>
+    <color name="pigeonPollTeal">#42CAEA</color>
 </resources>
