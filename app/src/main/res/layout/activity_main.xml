@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/standard"
+    android:background="@color/pigeonPollPrimary"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="nameEnter"
+            android:textColor="@color/colorPrimaryDark"
             android:text="Enter Name" />
 
         <Button
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="done"
+            android:textColor="@color/colorPrimaryDark"
             android:text="Finished" />
 
     </LinearLayout>
@@ -52,6 +55,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/name_list"
             android:orientation="vertical"
+            android:textColor="@color/colorPrimaryDark"
             tools:context=".MainActivity">
 
         </LinearLayout>
