@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#31175F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="pigeonPollPrimary">#FFF9EA</color>
+    <color name="pigeonPollGold">#FCC941</color>
+    <color name="pigeonPollTeal">#42CAEA</color>
 </resources>

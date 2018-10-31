@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/my_question_button"
         android:onClick="myQuestionEntered"
+        android:background="@drawable/border"
         android:textColor="@color/colorPrimaryDark"
         android:padding="@dimen/standard"
         android:text="@string/my_question_text"/>

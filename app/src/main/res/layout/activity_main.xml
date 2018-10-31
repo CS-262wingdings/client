@@ -29,12 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="nameEnter"
+            android:background="@drawable/border"
             android:textColor="@color/colorPrimaryDark"
             android:text="Enter Name" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/border"
             android:layout_weight="1"
             android:onClick="done"
             android:textColor="@color/colorPrimaryDark"

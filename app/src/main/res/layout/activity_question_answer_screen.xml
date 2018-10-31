@@ -9,10 +9,10 @@
     tools:context=".QuestionAnswerScreen">
 
     <TextView
+        android:id="@+id/question_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:id="@+id/question_label"/>
+        android:textColor="@color/colorPrimaryDark" />
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
