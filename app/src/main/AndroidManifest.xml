@@ -22,6 +22,8 @@
         <activity android:name=".QuestionAnswerScreen" />
         <activity android:name=".PassScreen1" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".LastPlayerScreen" />
+        <activity android:name=".ResultsScreen"></activity>
     </application>
 
 </manifest>

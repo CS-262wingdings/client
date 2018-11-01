@@ -8,34 +8,25 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class QuestionAnswerScreen extends AppCompatActivity {
+public class LastPlayerScreen extends AppCompatActivity {
 
-    private String question;
-    private TextView questionLabel;
     private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_answer_screen);
+        setContentView(R.layout.activity_last_player_screen);
+        this.game = Game.getInstance();
+        TextView topText = findViewById(R.id.top_text);
+        topText.setText(game.getCurrentPlayer() + ", who do you think got the most votes?");
 
-        //question = getIntent().getStringExtra("question");
-        //question = (!question.equals("custom")) ? question: "Who best fits the asked question?";
-        game = Game.getInstance();
-        if(game.currentQuestion == null) {
-            question = "Who best fits the asked question?";
-        }else {
-            question = game.currentQuestion;
-        }
-
-        questionLabel = (TextView)findViewById(R.id.question_label);
-        questionLabel.setText(question);
-
-        LinearLayout nameHolder = (LinearLayout)findViewById(R.id.name_list);
+        LinearLayout nameHolder = (LinearLayout)findViewById(R.id.name_voting_list);
         for (int i = 0; i < game.names.size(); i++) {
             Button b = makeButton(game.names.get(i));
             nameHolder.addView(b);
         }
+
+
     }
 
     private Button makeButton(final String name) {
@@ -43,16 +34,16 @@ public class QuestionAnswerScreen extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.voteForQuestion(name);
-                nextTurn();
+                game.voteForPlayer(name);
+                viewResults();
             }
         });
         b.setText(name);
         return b;
     }
 
-    public void nextTurn(){
-        Intent i = new Intent(this, PassScreen1.class);
+    private void viewResults() {
+        Intent i = new Intent(this, ResultsScreen.class);
         startActivity(i);
         finish();
     }
