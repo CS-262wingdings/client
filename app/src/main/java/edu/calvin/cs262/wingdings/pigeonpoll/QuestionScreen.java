@@ -1,4 +1,4 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

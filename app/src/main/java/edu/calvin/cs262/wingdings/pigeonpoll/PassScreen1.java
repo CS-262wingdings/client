@@ -1,11 +1,9 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class PassScreen1 extends AppCompatActivity {

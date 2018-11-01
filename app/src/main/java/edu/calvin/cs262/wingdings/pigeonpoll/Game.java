@@ -1,11 +1,7 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
-
-import android.util.Log;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Game {
     // Stores the names of all players in clockwise order
@@ -59,6 +55,7 @@ public class Game {
     public void endTurn() {
         votesPerPlayer = new HashMap<String, Integer>();
         firstPlayer = (firstPlayer + 1) % names.size();
+        currentPlayer = firstPlayer;
     }
 
     public void endRound()

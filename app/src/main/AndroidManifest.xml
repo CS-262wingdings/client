@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="wingdings.cs262.calvin.edu.pigeonpoll">
+    package="edu.calvin.cs262.wingdings.pigeonpoll">
 
     <application
         android:allowBackup="true"
@@ -11,19 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SplashActivity">
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuestionScreen" />
-        <activity android:name=".QuestionAnswerScreen" />
-        <activity android:name=".PassScreen1" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LastPlayerScreen" />
-        <activity android:name=".ResultsScreen"></activity>
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.QuestionScreen" />
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.QuestionAnswerScreen" />
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.PassScreen1" />
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.MainActivity" />
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.LastPlayerScreen" />
+        <activity android:name="edu.calvin.cs262.wingdings.pigeonpoll.ResultsScreen"></activity>
     </application>
 
 </manifest>

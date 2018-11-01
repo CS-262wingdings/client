@@ -1,4 +1,4 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 public class Question {
     // Stores the actual
