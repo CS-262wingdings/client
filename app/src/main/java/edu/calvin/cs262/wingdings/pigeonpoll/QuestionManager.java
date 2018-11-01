@@ -1,7 +1,7 @@
 // QuestionManager interfaces with the local question pool and the server question pool.
 // It relays this data to the game during runtime.
 
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import java.util.ArrayList;
 import java.util.Random;

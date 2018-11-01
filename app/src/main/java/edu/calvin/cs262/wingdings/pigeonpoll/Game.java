@@ -1,4 +1,4 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +28,9 @@ public class Game {
     // A round is a cycle of every player asking a question
     int rounds;
 
+    // Stores the value of the rounds' points so we can show them in the results screen
+    int votePoints;
+
     // Stores this Game's instance
     private static Game instance;
 
@@ -44,21 +47,20 @@ public class Game {
         this.rounds = rounds;
     }
 
-    public int getPlayerNumber() {
-        return names.size();
-    }
-
     void addName(String name) {
         names.add(name);
         points.put(name, 0);
     }
 
-    public void startRound() {
+    public void endTurn() {
         votesPerPlayer = new HashMap<String, Integer>();
+        firstPlayer = (firstPlayer + 1) % names.size();
+        currentPlayer = firstPlayer;
     }
 
-    public void endTurn() {
-        currentPlayer = (currentPlayer + 1) % names.size();
+    public void endRound()
+    {
+        roundsPlayed++;
     }
 
     public boolean isGameOver() {
@@ -72,11 +74,22 @@ public class Game {
         return instance;
     }
 
-    public void vote( String playerName) {
-        if(votesPerPlayer.containsValue(playerName)) {
+    public void voteForQuestion(String playerName) {
+        if(votesPerPlayer.containsKey(playerName)) {
             votesPerPlayer.put(playerName, votesPerPlayer.get(playerName) + 1);
         }else{
             votesPerPlayer.put(playerName,1);
+        }
+        currentPlayer = (currentPlayer + 1 + names.size()) % names.size();
+    }
+
+    public void voteForPlayer(String playerName) {
+        votePoints = (votesPerPlayer.containsKey(playerName)) ? votesPerPlayer.get(playerName) : 0 ;
+
+        if (points.containsKey(getCurrentPlayer())) {
+            points.put(getCurrentPlayer(), points.get(getCurrentPlayer()) + votePoints);
+        } else {
+            points.put(getCurrentPlayer(), votePoints);
         }
     }
 
@@ -88,4 +101,15 @@ public class Game {
         currentQuestion = q;
     }
 
+    public boolean isLastPlayer() {
+        return ((currentPlayer + names.size() + 1) % names.size() == firstPlayer);
+    }
+
+    public int getPoints(int playerNum) {
+        return points.get(names.get(playerNum));
+    }
+
+    public int getRoundPoints(int playerNum) {
+        return (votesPerPlayer.get(names.get(playerNum)) == null) ? 0 : votesPerPlayer.get(names.get(playerNum));
+    }
 }

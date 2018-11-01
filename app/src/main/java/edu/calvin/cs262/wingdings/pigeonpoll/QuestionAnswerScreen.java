@@ -1,4 +1,4 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class QuestionAnswerScreen extends AppCompatActivity {
 
@@ -45,8 +43,7 @@ public class QuestionAnswerScreen extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.vote(name);
-                game.currentPlayer = (game.currentPlayer + 1) % game.names.size();
+                game.voteForQuestion(name);
                 nextTurn();
             }
         });

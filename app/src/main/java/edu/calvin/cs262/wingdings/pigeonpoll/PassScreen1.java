@@ -1,10 +1,9 @@
-package wingdings.cs262.calvin.edu.pigeonpoll;
+package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class PassScreen1 extends AppCompatActivity {
@@ -24,12 +23,14 @@ public class PassScreen1 extends AppCompatActivity {
     }
 
     public void confirmPlayer(View view) {
-        if(game.currentPlayer != (game.firstPlayer - 1)% game.names.size()){
+        if (!game.isLastPlayer()) {
             Intent i = new Intent(this, QuestionAnswerScreen.class);
             startActivity(i);
             finish();
-        }else{
-            //go to last player's intent
+        } else {
+            Intent i = new Intent(this, LastPlayerScreen.class);
+            startActivity(i);
+            finish();
         }
     }
 }
