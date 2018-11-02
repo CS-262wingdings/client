@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     private RadioButton makeCloseButton(final LinearLayout nameView, final String name) {
         final RadioButton closeButton = new RadioButton(this);
+
+        closeButton.setButtonDrawable(R.drawable.delete);
+
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
