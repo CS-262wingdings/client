@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -39,11 +40,19 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView nameView = new TextView(this);
                 nameView.setText(input);
+                nameView.setTextSize(24);
 
                 RadioButton closeButton = makeCloseButton(nameLayout, input);
 
                 nameLayout.addView(closeButton);
                 nameLayout.addView(nameView);
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.weight = 0.0f;
+                params.gravity = Gravity.CENTER_HORIZONTAL;
+
+                nameLayout.setLayoutParams(params);
+                nameLayout.setPadding(15, 25, 0, 25);
 
                 nameList.addView(nameLayout);
 
