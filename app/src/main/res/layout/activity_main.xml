@@ -12,50 +12,34 @@
     tools:context=".MainActivity">
 
 
-
     <EditText
+        android:id="@+id/name_input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/standard"
+        android:layout_weight="0"
         android:hint="Enter your name here"
-        android:id="@+id/name_input" />
+        android:paddingTop="@dimen/standard" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="nameEnter"
-            android:background="@drawable/border"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Enter Name" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:layout_weight="1"
-            android:onClick="done"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Finished" />
-
-    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@drawable/border"
+        android:onClick="nameEnter"
+        android:text="Enter Name"
+        android:textColor="@color/colorPrimaryDark" />
 
 
-
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/name_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:textColor="@color/colorPrimaryDark"
             tools:context=".MainActivity">
@@ -64,6 +48,14 @@
 
     </ScrollView>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@drawable/border"
+        android:onClick="done"
+        android:text="Finished"
+        android:textColor="@color/colorPrimaryDark" />
 
 
 </LinearLayout>

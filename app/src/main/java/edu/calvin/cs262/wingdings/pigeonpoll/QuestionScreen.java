@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -27,7 +28,7 @@ public class QuestionScreen extends AppCompatActivity {
         qManager = QuestionManager.getInstance();
 
         TextView questionPrompt = findViewById(R.id.prompt);
-        questionPrompt.setText(game.getCurrentPlayer() + ", Ask a question out loud OR Pick one !");
+        questionPrompt.setText(game.getCurrentPlayer() + ", Ask a question");
 
         getQuestions();
 
@@ -61,6 +62,9 @@ public class QuestionScreen extends AppCompatActivity {
             }
         });
         b.setText(question.text);
+
+        b.setPadding(0, 25, 0 ,25);
+
         return b;
     }
 

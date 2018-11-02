@@ -46,16 +46,16 @@ public class QuestionManager {
         // TODO: load questions from a file in local storage.
 
         String[] questionText = {
-                "Who is the man?",
+                "Who is most likely to sell off all their belongings to charity and become a monk in Nepal?",
                 "Who will be dead in 5 years?",
-                "Who is the best looking?",
+                "Who would you rather be stranded on a desert island with?",
                 "Who would be most likely to go to a grocery store and by eight dozen eggs?",
                 "Who has the best smile?",
                 "Who makes the best food?",
                 "Who is most likely to wake up hungover on a cruise ship they didn't buy a ticket for?",
-                "Who has the worst style?",
+                "If you had to wear someone else's eyebrows as a mustache, whose eyebrows would you choose?",
                 "Who could find the best deal online?",
-                "Who is the most like a hipster?"
+                "Which person deserves to win the lottery?"
         };
 
         // This is just temp data
