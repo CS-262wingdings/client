@@ -8,4 +8,5 @@
     <string name="thatsMe">That\'s Me!</string>
 
     <string name="layout_gravity">center_horizontal</string>
+    <string name="title_activity_main_menu">MainMenu</string>
 </resources>

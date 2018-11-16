@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomQuestion"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter a new question:" />
+
+    <EditText
+        android:id="@+id/entryField"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="who is..." />
+
+    <Button
+        android:id="@+id/Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+    <CheckBox
+        android:id="@+id/uploadOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload to the internet for other players to use" />
+
+    <Button
+        android:id="@+id/gotoQuestionList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="see other questions" />
+</LinearLayout>
