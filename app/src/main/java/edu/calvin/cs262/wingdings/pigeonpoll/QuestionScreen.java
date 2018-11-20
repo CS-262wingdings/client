@@ -64,6 +64,7 @@ public class QuestionScreen extends AppCompatActivity {
         b.setText(question.text);
 
         b.setPadding(0, 25, 0 ,25);
+        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
 
         return b;
     }

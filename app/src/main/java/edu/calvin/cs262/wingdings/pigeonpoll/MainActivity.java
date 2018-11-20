@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Game.resetGame();
         game = Game.getInstance();
         nameList = (LinearLayout)findViewById(R.id.name_list);
     }
@@ -89,5 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
+        finish();
     }
 }

@@ -64,7 +64,9 @@ public class ResultsScreen extends AppCompatActivity {
 
     public void nextRound(View view) {
         if (game.isGameOver()) {
-            // Game Over Screen
+            Intent i = new Intent(this, MainMenu.class);
+            startActivity(i);
+            finish();
         } else {
             Intent i = new Intent(this, QuestionScreen.class);
             startActivity(i);
