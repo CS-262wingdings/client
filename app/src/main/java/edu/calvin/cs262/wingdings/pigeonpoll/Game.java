@@ -47,6 +47,10 @@ public class Game {
         this.rounds = rounds;
     }
 
+    public static void resetGame() {
+        instance = new Game(1);
+    }
+
     void addName(String name) {
         names.add(name);
         points.put(name, 0);

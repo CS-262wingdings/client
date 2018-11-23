@@ -39,6 +39,7 @@ public class LastPlayerScreen extends AppCompatActivity {
             }
         });
         b.setText(name);
+        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
         return b;
     }
 

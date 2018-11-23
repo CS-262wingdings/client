@@ -49,7 +49,7 @@ public class QuestionManager {
                 "Who is most likely to sell off all their belongings to charity and become a monk in Nepal?",
                 "Who will be dead in 5 years?",
                 "Who would you rather be stranded on a desert island with?",
-                "Who would be most likely to go to a grocery store and by eight dozen eggs?",
+                "Who would be most likely to go to a grocery store and buy eight dozen eggs?",
                 "Who has the best smile?",
                 "Who makes the best food?",
                 "Who is most likely to wake up hungover on a cruise ship they didn't buy a ticket for?",

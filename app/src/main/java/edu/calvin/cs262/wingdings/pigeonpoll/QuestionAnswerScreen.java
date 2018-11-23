@@ -47,7 +47,10 @@ public class QuestionAnswerScreen extends AppCompatActivity {
                 nextTurn();
             }
         });
+
         b.setText(name);
+        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
+
         return b;
     }
 
