@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/standard"
+    android:background="@color/pigeonPollGold"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    tools:context=".How2Play">
+
+    <TextView
+        android:id="@+id/howtoplay1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="These are the instructions. Tell them to all new players." />
+
+    <TextView
+        android:id="@+id/ask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ask."
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@id/howtoplay1" />
+
+    <TextView
+        android:id="@+id/ask2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The first player asks a question. \nA question can be answered by naming another person in the group."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintTop_toBottomOf="@id/ask" />
+
+    <TextView
+        android:id="@+id/vote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="Vote."
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@id/ask2" />
+
+    <TextView
+        android:id="@+id/vote2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Every player votes on their favorite answer."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintTop_toBottomOf="@id/vote" />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="Answer."
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@id/vote2" />
+
+    <TextView
+        android:id="@+id/answer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The last player tries to guess the answer that got the most votes."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintTop_toBottomOf="@id/answer" />
+
+    <TextView
+        android:id="@+id/repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="Repeat."
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toBottomOf="@id/answer2" />
+
+    <TextView
+        android:id="@+id/repeat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The last player becomes the first. They get to pick the next question."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintTop_toBottomOf="@id/repeat" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/border"
+        android:textStyle="bold"
+        android:onClick="goToGame"
+        android:text="got it." />
+</android.support.constraint.ConstraintLayout>
