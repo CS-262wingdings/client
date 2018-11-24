@@ -25,9 +25,8 @@
     <Button
         android:id="@+id/startbtn"
         android:layout_width="wrap_content"
-        android:layout_height="94dp"
-        android:layout_marginBottom="116dp"
-        android:background="@drawable/startbutton"
+        android:layout_height="95dp"
+        android:background="@drawable/startbutton2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

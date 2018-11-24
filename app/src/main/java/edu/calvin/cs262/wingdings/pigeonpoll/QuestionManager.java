@@ -55,11 +55,19 @@ public class QuestionManager {
                 "Who is most likely to wake up hungover on a cruise ship they didn't buy a ticket for?",
                 "If you had to wear someone else's eyebrows as a mustache, whose eyebrows would you choose?",
                 "Who could find the best deal online?",
+                "Who is probably on an FBI watchlist?",
+                "Who would make a good guest appearance on Ellen?",
+                "Who is the most responsible?",
+                "Which person is secretly an alien?",
+                "Who would die first in a horror movie?",
+                "Who has the worst luck?",
+                "Who is the least responsible person?",
+                "Who would you trust with your darkest secrets?",
                 "Which person deserves to win the lottery?"
         };
 
         // This is just temp data
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < questionText.length; i++) {
             Question q = new Question(questionText[i], 3);
             questions.add(q);
         }
