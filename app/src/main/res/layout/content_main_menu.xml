@@ -6,23 +6,32 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainMenu"
+    android:background="@color/pigeonPollTeal"
     android:orientation="vertical"
+    android:padding="@dimen/standard"
     tools:showIn="@layout/activity_main_menu">
 
 
     <Button
         android:id="@+id/startgame"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Start Game"
-        android:onClick="StartGame"/>
+        android:layout_weight=".8"
+        android:layout_margin="@dimen/standard"
+        android:background="@drawable/border"
+        android:textStyle="bold"
+        android:onClick="StartGame"
+        android:text="Start Game" />
 
     <Button
         android:id="@+id/customizeGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight=".2"
+        android:layout_margin="@dimen/standard"
         android:onClick="customizeGame"
+        android:background="@drawable/border"
+        android:textStyle="bold"
         android:text="Customize Game" />
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class ResultsScreen extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class ResultsScreen extends AppCompatActivity {
         pointsGotten.setText("+" + game.votePoints + pointText);
 
         LinearLayout roundNamesHolder = findViewById(R.id.round_names_holder);
-        LinearLayout roundScoreHolder = findViewById(R.id.round_points_holder);
+        //LinearLayout roundScoreHolder = findViewById(R.id.round_points_holder);
         LinearLayout overallNamesHolder = findViewById(R.id.overall_names_holder);
         LinearLayout overallScoreHolder = findViewById(R.id.overall_points_holder);
 
@@ -36,12 +37,20 @@ public class ResultsScreen extends AppCompatActivity {
             overallNamesHolder.addView(nameView);
 
             TextView nameView2 = new TextView(this);
-            nameView2.setText(game.names.get(i));
+            nameView2.setText(game.names.get(i) + " got " + game.getRoundPoints(i) + " vote");
+            if(game.getRoundPoints(i) != 1){
+                nameView2.setText(nameView2.getText() + "s");
+            }
             roundNamesHolder.addView(nameView2);
 
-            TextView roundScore = new TextView(this);
-            roundScore.setText("" + game.getRoundPoints(i));
-            roundScoreHolder.addView(roundScore);
+            ProgressBar p1 = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
+            p1.setMax(game.names.size());
+            p1.setProgress(game.getRoundPoints(i));
+            roundNamesHolder.addView(p1);
+
+//            TextView roundScore = new TextView(this);
+//            roundScore.setText("" + game.getRoundPoints(i));
+//            roundScoreHolder.addView(roundScore);
 
             TextView overallScore = new TextView(this);
             overallScore.setText("" + game.getPoints(i));

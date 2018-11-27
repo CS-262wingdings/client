@@ -17,8 +17,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:hint="Enter your name here"
-        android:paddingTop="@dimen/standard" />
+        android:hint="Enter the names of each player here"
+        android:paddingTop="@dimen/standard"
+        android:inputType="textCapWords"
+        android:selectAllOnFocus="true"
+        android:singleLine="true" />
 
     <Button
         android:layout_width="match_parent"

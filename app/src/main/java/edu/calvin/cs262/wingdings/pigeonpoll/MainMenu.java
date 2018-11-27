@@ -20,7 +20,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void StartGame(View view) {
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this,How2Play.class));
     }
 
 
