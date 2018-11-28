@@ -58,8 +58,7 @@ public class Game {
 
     public void endTurn() {
         votesPerPlayer = new HashMap<String, Integer>();
-        firstPlayer = (firstPlayer + 1) % names.size();
-        currentPlayer = firstPlayer;
+        firstPlayer = currentPlayer;
     }
 
     public void endRound()
