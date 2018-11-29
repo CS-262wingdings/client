@@ -68,11 +68,23 @@ public class QuestionManager {
 
         // This is just temp data
         for(int i = 0; i < questionText.length; i++) {
-            Question q = new Question(questionText[i], 3);
+            Question q = new Question(questionText[i]);
             questions.add(q);
         }
 
         enabledQuestions = new ArrayList<Question>(questions);
+    }
+
+    public void addQuestion(String text, boolean local) {
+        addQuestionLocally(new Question(text));
+        if (!local) {
+            uploadQuestion(new Question(text));
+        }
+    }
+
+    private void addQuestionLocally(Question q) {
+        questions.add(q);
+        enabledQuestions.add(q);
     }
 
     // Upload a question to the server
@@ -84,6 +96,10 @@ public class QuestionManager {
     // Index is some way of finding which question it is in the database
     private void downloadQuestion(int index) {
         // TODO: interface with server
+    }
+
+    public boolean isQuestionDownloaded(Question q) {
+        return questions.contains(q);
     }
 
     // Returns a question to be used by the game
@@ -111,5 +127,13 @@ public class QuestionManager {
 
     public ArrayList<Question> getAskedQuestions() {
         return askedQuestions;
+    }
+
+    public ArrayList<Question> fakeGetOnlineQuestions() {
+        ArrayList<Question> ret = new ArrayList<Question>();
+        ret.add(new Question("Who could be on broadway?"));
+        ret.add(new Question("Who would sell their brother for a corn chip?"));
+        ret.add(new Question("Who makes the best jokes?"));
+        return ret;
     }
 }

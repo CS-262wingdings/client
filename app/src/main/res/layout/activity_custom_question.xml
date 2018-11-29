@@ -25,7 +25,8 @@
         android:id="@+id/Submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:text="Submit"
+        android:onClick="newQuestion"/>
 
     <CheckBox
         android:id="@+id/uploadOption"
