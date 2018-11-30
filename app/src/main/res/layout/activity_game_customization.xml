@@ -5,7 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameCustomization"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="@dimen/standard">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/NewQuestion"
@@ -18,11 +24,17 @@
         android:id="@+id/DownloadQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="See Other People's Questions" />
+        android:text="See Other People's Questions"
+        android:onClick="downloadQuestions"/>
 
     <Button
         android:id="@+id/ManageQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manage All Questions" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 </LinearLayout>

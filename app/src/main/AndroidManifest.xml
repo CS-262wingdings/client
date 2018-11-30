@@ -31,7 +31,8 @@
         <activity android:name=".GameCustomization" />
         <activity android:name=".CustomQuestion" />
         <activity android:name=".How2Play" />
-        <activity android:name=".YouWin"></activity>
+        <activity android:name=".YouWin" />
+        <activity android:name=".DownloadQuestion"></activity>
     </application>
 
 </manifest>

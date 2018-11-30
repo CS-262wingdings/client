@@ -1,17 +1,26 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
-public class Question {
-    // Stores the actual
-    public String text;
-    public float rating;
+import android.support.annotation.NonNull;
 
-    public Question(String text, float rating) {
+import java.util.Date;
+
+public class Question {
+    // Stores the question
+    public String text;
+    public Date timeStamp;
+    public int downloads;
+
+    public Question(String text, Date timeStamp, int downloads) {
         this.text = text;
-        this.rating = rating;
+        this.timeStamp = timeStamp;
+        this.downloads = downloads;
     }
 
-    public float changeRating(float delta) {
-        rating += delta;
-        return rating;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Question) {
+            return ((Question) obj).text.equals(text);
+        }
+        return false;
     }
 }
