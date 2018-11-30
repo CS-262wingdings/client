@@ -9,4 +9,10 @@
 
     <string name="layout_gravity">center_horizontal</string>
     <string name="title_activity_main_menu">MainMenu</string>
+    <string name="sort_by">Sort By:</string>
+
+    <string-array name="sort_options">
+        <item>Date</item>
+        <item>Popularity</item>
+    </string-array>
 </resources>

@@ -6,6 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".DownloadQuestion"
     android:orientation="vertical"
-    android:id="@+id/download_question_holder">
+    android:layout_margin="@dimen/standard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sort_by" />
+
+        <Spinner
+            android:id="@+id/sort_options_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/download_question_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

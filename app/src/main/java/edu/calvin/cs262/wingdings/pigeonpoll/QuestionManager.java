@@ -3,7 +3,9 @@
 
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 public class QuestionManager {
@@ -68,7 +70,7 @@ public class QuestionManager {
 
         // This is just temp data
         for(int i = 0; i < questionText.length; i++) {
-            Question q = new Question(questionText[i]);
+            Question q = new Question(questionText[i], new Date(System.currentTimeMillis()), 0);
             questions.add(q);
         }
 
@@ -76,9 +78,10 @@ public class QuestionManager {
     }
 
     public void addQuestion(String text, boolean local) {
-        addQuestionLocally(new Question(text));
+        Question q = new Question(text, new Date(System.currentTimeMillis()), 0);
+        addQuestionLocally(q);
         if (!local) {
-            uploadQuestion(new Question(text));
+            uploadQuestion(q);
         }
     }
 
@@ -131,9 +134,9 @@ public class QuestionManager {
 
     public ArrayList<Question> fakeGetOnlineQuestions() {
         ArrayList<Question> ret = new ArrayList<Question>();
-        ret.add(new Question("Who could be on broadway?"));
-        ret.add(new Question("Who would sell their brother for a corn chip?"));
-        ret.add(new Question("Who makes the best jokes?"));
+        ret.add(new Question("Who could be on broadway?", new Date(System.currentTimeMillis()), 4));
+        ret.add(new Question("Who would sell their brother for a corn chip?", new Date(System.currentTimeMillis() - 14000000 ), 140));
+        ret.add(new Question("Who makes the best jokes?", new Date(System.currentTimeMillis() - 259599 ), 24924));
         return ret;
     }
 }
