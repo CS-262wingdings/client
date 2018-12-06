@@ -3,10 +3,12 @@ package edu.calvin.cs262.wingdings.pigeonpoll;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Item {
+import java.util.Date;
+
+public class Items {
         @SerializedName("time")
         @Expose
-        private String time;
+        private Date time;
         @SerializedName("id")
         @Expose
         private Integer id;
@@ -17,11 +19,11 @@ public class Item {
         @Expose
         private String contents;
 
-        public String getTime() {
+        public Date getTime() {
             return time;
         }
 
-        public void setTime(String time) {
+        public void setTime(Date time) {
             this.time = time;
         }
 

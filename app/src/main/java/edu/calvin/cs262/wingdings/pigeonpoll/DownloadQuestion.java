@@ -14,6 +14,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DownloadQuestion extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -77,6 +85,28 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
                 b.setEnabled(false);
                 Toast.makeText(getApplicationContext(), b.getText() + ": Question Downloaded!", Toast.LENGTH_SHORT).show();
                 qm.addQuestion(b.getText().toString(), true);
+
+                // PUT request with index q.
+
+                Call call = QuestionClient.getInstance().getService().updateDownloads(q.id);
+
+                call.enqueue(new Callback<List<Question>>() {
+                    @Override
+                    public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
+//                String responseString = "Response: ";
+                        if (response.isSuccessful()) {
+                        }
+                        // TODO handle error
+//                else {
+//                }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Question>> call, Throwable t) {
+                        // something went completely south (like no internet connection)
+                        Log.d("Error", t.getMessage());
+                    }
+                });
             }
         });
         if (qm.isQuestionDownloaded(q)) {
