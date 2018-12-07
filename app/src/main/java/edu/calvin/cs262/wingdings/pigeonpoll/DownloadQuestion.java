@@ -31,6 +31,7 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
     private int sortOption = 0;
     private boolean questionsReceived;
     private ArrayList<Question> downloadedQuestions;
+    private LinearLayout layoutParent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,51 +47,24 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
         options.setAdapter(adapter);
         options.setOnItemSelectedListener(this);
 
-        LinearLayout layoutParent = findViewById(R.id.download_question_holder);
+        layoutParent = (LinearLayout)findViewById(R.id.download_question_holder);
 
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                generateQuestions((LinearLayout)findViewById(R.id.download_question_holder));
-            }
-        });
-        t.run();
+//        Thread t = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                generateQuestions();
+//            }
+//        });
+//        t.run();
     }
 
-    private void generateQuestions(LinearLayout layoutParent) {
+    private void generateQuestions() {
         layoutParent.removeAllViewsInLayout();
 
         questionsReceived = false;
         downloadedQuestions = new ArrayList<>();
 
         qm.downloadQuestions(DownloadQuestion.this);
-
-        while (!questionsReceived) {
-            ;
-        }
-
-        if (sortOption == 0) {
-            Comparator<Question> comp = new Comparator<Question>() {
-                @Override
-                public int compare(Question o1, Question o2) {
-                    return o1.timeStamp.compareTo(o1.timeStamp);
-                }
-            };
-            Collections.sort(downloadedQuestions, comp);
-        } else {
-            Comparator<Question> comp = new Comparator<Question>() {
-                @Override
-                public int compare(Question o1, Question o2) {
-                    return o1.downloads - (o2.downloads);
-                }
-            };
-            Collections.sort(downloadedQuestions, comp);
-        }
-
-        for(Question q : downloadedQuestions) {
-            Button b = makeButton(q);
-            layoutParent.addView(b);
-        }
     }
 
     private Button makeButton(final Question q) {
@@ -103,7 +77,6 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
             public void onClick(View v) {
                 b.setEnabled(false);
                 Toast.makeText(getApplicationContext(), b.getText() + ": Question Downloaded!", Toast.LENGTH_SHORT).show();
-                // qm.addQuestion(b.getText().toString(), true);
                 qm.addQuestionLocally(q);
 
                 // PUT request with index q.
@@ -139,7 +112,7 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String selected = (String)parent.getItemAtPosition(position);
+        String selected = (String) parent.getItemAtPosition(position);
         if (selected.equals("Date")) {
             sortOption = 0;
         } else {
@@ -149,10 +122,32 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                generateQuestions((LinearLayout)findViewById(R.id.download_question_holder));
+                generateQuestions();
             }
         });
         t.run();
+        if (sortOption == 0) {
+            Comparator<Question> comp = new Comparator<Question>() {
+                @Override
+                public int compare(Question o1, Question o2) {
+                    return o1.timeStamp.compareTo(o1.timeStamp);
+                }
+            };
+            Collections.sort(downloadedQuestions, comp);
+        } else {
+            Comparator<Question> comp = new Comparator<Question>() {
+                @Override
+                public int compare(Question o1, Question o2) {
+                    return o1.downloads - (o2.downloads);
+                }
+            };
+            Collections.sort(downloadedQuestions, comp);
+        }
+
+        for (Question q : downloadedQuestions) {
+            Button b = makeButton(q);
+            layoutParent.addView(b);
+        }
     }
 
     @Override
@@ -162,5 +157,28 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
     public void returnList(ArrayList<Question> returnList) {
         downloadedQuestions = returnList;
         questionsReceived = true;
+
+        if (sortOption == 0) {
+            Comparator<Question> comp = new Comparator<Question>() {
+                @Override
+                public int compare(Question o1, Question o2) {
+                    return o1.timeStamp.compareTo(o1.timeStamp);
+                }
+            };
+            Collections.sort(downloadedQuestions, comp);
+        } else {
+            Comparator<Question> comp = new Comparator<Question>() {
+                @Override
+                public int compare(Question o1, Question o2) {
+                    return o1.downloads - (o2.downloads);
+                }
+            };
+            Collections.sort(downloadedQuestions, comp);
+        }
+
+        for(Question q : downloadedQuestions) {
+            Button b = makeButton(q);
+            layoutParent.addView(b);
+        }
     }
 }
