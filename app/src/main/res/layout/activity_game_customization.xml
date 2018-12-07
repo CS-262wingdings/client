@@ -31,7 +31,8 @@
         android:id="@+id/ManageQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Manage All Questions" />
+        android:text="Manage All Questions"
+        android:onClick="manageQuestions"/>
 
     <Space
         android:layout_width="match_parent"

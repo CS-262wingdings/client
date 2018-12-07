@@ -17,5 +17,5 @@ public interface QuestionService {
     Call<Question> createQuestion(@Field("contents") String text);
 
     @PUT("game/v1/question/{id}")
-    Call updateDownloads(@Path("id") int id);
+    Call<Items> updateDownloads(@Path("id") int id);
 }

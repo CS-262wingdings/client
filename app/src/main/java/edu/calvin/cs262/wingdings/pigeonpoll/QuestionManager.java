@@ -5,7 +5,6 @@ package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Context;
 import android.util.Log;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -15,17 +14,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-
-//import javax.xml.ws.Response;
-
-//import jdk.nashorn.internal.codegen.CompilerConstants.Call;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class QuestionManager implements Serializable {
     // Stores the version for serialization
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 3L;
 
     // Stores all the questions which are in the local question pool
     private ArrayList<Question> questions;
@@ -39,31 +34,10 @@ public class QuestionManager implements Serializable {
     // Stores the questions which have actually been asked
     private transient ArrayList<Question> askedQuestions;
 
-
     private transient Random random;
 
     // Stores this QuestionManager's instance, to make it a singleton
     public static QuestionManager instance;
-        String[] questionText = {
-                "Who is most likely to sell off all their belongings to charity and become a monk in Nepal?",
-                "Who will be dead in 5 years?",
-                "Who would you rather be stranded on a desert island with?",
-                "Who would be most likely to go to a grocery store and buy eight dozen eggs?",
-                "Who has the best smile?",
-                "Who makes the best food?",
-                "Who is most likely to wake up hungover on a cruise ship they didn't buy a ticket for?",
-                "If you had to wear someone else's eyebrows as a mustache, whose eyebrows would you choose?",
-                "Who could find the best deal online?",
-                "Who is probably on an FBI watchlist?",
-                "Who would make a good guest appearance on Ellen?",
-                "Who is the most responsible?",
-                "Which person is secretly an alien?",
-                "Who would die first in a horror movie?",
-                "Who has the worst luck?",
-                "Who is the least responsible person?",
-                "Who would you trust with your darkest secrets?",
-                "Which person deserves to win the lottery?"
-        };
 
     private transient Context context;
 
@@ -77,7 +51,7 @@ public class QuestionManager implements Serializable {
 
         random = new Random();
 
-        loadQuestions();
+        loadQuestions(false);
     }
 
     public static QuestionManager getInstance(Context context) {
@@ -87,9 +61,9 @@ public class QuestionManager implements Serializable {
         return instance;
     }
 
-    public void addQuestion(String text, boolean local) {
+    public void addQuestion(String text, boolean online) {
        Question q = new Question(text, questions.size(), new Date(System.currentTimeMillis()), 0);
-       if (!local) {
+       if (online) {
         uploadQuestion(text);
        } else {
            addQuestionLocally(q);
@@ -183,14 +157,6 @@ public class QuestionManager implements Serializable {
         return askedQuestions;
     }
 
-//    public ArrayList<Question> fakeGetOnlineQuestions() {
-//        ArrayList<Question> ret = new ArrayList<Question>();
-//        ret.add(new Question("Who could be on broadway?", 99, new Date(System.currentTimeMillis()), 4));
-//        ret.add(new Question("Who would sell their brother for a corn chip?", 100, new Date(System.currentTimeMillis() - 14000000 ), 140));
-//        ret.add(new Question("Who makes the best jokes?", 101, new Date(System.currentTimeMillis() - 259599 ), 24924));
-//        return ret;
-//    }
-
     private void saveQuestions() {
         try {
             ObjectOutputStream out = new ObjectOutputStream(context.openFileOutput("questions.sav", Context.MODE_PRIVATE));
@@ -201,14 +167,14 @@ public class QuestionManager implements Serializable {
         }
     }
 
-    private void loadQuestions() {
+    private void loadQuestions(boolean corrupted) {
         boolean exists = true;
         File testFile = context.getFileStreamPath("questions.sav");
         if (testFile == null || !testFile.exists()) {
             exists = false;
         }
 
-        if (!exists) {
+        if (!exists || corrupted) {
             String[] questionText = {
                     "Who is most likely to sell off all their belongings to charity and become a monk in Nepal?",
                     "Who will be dead in 5 years?",
@@ -247,5 +213,28 @@ public class QuestionManager implements Serializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        if (questions.size() == 0) {
+            loadQuestions(true);
+        }
+    }
+
+    public boolean isQuestionEnabled(Question q) {
+        return enabledQuestions.contains(q);
+    }
+
+    public void disableQuestion(Question q) {
+        enabledQuestions.remove(q);
+        saveQuestions();
+    }
+
+    public void enableQuestion(Question q) {
+        enabledQuestions.add(q);
+        saveQuestions();
+    }
+
+    public void deleteQuestion(Question q) {
+        questions.remove(q);
+        saveQuestions();
     }
 }
