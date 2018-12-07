@@ -17,5 +17,7 @@ public class GameCustomization extends AppCompatActivity {
         startActivity(new Intent(this,CustomQuestion.class));
     }
 
-    public void downloadQuestions(View view) {startActivity(new Intent(this,DownloadQuestion.class));  }
+    public void downloadQuestions(View view) {startActivity(new Intent(this,DownloadQuestion.class));}
+
+    public void manageQuestions(View view) {startActivity(new Intent(this,ManageQuestions.class));}
 }

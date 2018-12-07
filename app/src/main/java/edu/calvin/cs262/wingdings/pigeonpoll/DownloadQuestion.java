@@ -48,14 +48,6 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
         options.setOnItemSelectedListener(this);
 
         layoutParent = (LinearLayout)findViewById(R.id.download_question_holder);
-
-//        Thread t = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                generateQuestions();
-//            }
-//        });
-//        t.run();
     }
 
     private void generateQuestions() {
@@ -81,25 +73,25 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
 
                 // PUT request with index q.
 
-                Call call = QuestionClient.getInstance().getService().updateDownloads(q.id);
+                QuestionClient.getInstance().getService().updateDownloads(q.id);
 
-                call.enqueue(new Callback<List<Question>>() {
-                    @Override
-                    public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
-//                String responseString = "Response: ";
-                        if (response.isSuccessful()) {
-                        }
-                        // TODO handle error
-//                else {
-//                }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Question>> call, Throwable t) {
-                        // something went completely south (like no internet connection)
-                        Log.d("Error", t.getMessage());
-                    }
-                });
+//                call.enqueue(new Callback<List<Question>>() {
+//                    @Override
+//                    public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
+////                String responseString = "Response: ";
+//                        if (response.isSuccessful()) {
+//                        }
+//                        // TODO handle error
+////                else {
+////                }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<Question>> call, Throwable t) {
+//                        // something went completely south (like no internet connection)
+//                        Log.d("Error", t.getMessage());
+//                    }
+//                });
             }
         });
         if (qm.isQuestionDownloaded(q)) {
