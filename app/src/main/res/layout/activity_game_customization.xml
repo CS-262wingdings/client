@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".GameCustomization"
     android:orientation="vertical"
+   android:background="@color/pigeonPollPrimary"
     android:layout_margin="@dimen/standard">
 
     <Space
