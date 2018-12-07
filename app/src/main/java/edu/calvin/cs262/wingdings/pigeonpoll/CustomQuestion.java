@@ -16,11 +16,11 @@ public class CustomQuestion extends AppCompatActivity {
 
     public void newQuestion(View view) {
         EditText entry = findViewById(R.id.entryField);
-        if (!entry.getText().toString().equals("Who is...") && !entry.getText().toString().equals("")) {
+        if (!entry.getText().toString().equals("") && !entry.getText().toString().equals("")) {
             CheckBox online = findViewById(R.id.uploadOption);      //TODO: make the online submit
             QuestionManager qm = QuestionManager.getInstance(getApplicationContext());
             qm.addQuestion(entry.getText().toString(), true);
-            entry.setText("Who is...");
+            entry.setText("");
         }
     }
 }
