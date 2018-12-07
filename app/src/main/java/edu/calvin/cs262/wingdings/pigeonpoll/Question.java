@@ -1,6 +1,7 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.support.annotation.NonNull;
+import java.sql.Timestamp;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,10 +12,11 @@ public class Question implements Serializable {
     // Stores the question
     public String text;
     public Date timeStamp;
-    public int downloads;
+    public int downloads, id;
 
-    public Question(String text, Date timeStamp, int downloads) {
+    public Question(String text, int id, Date timeStamp, int downloads) {
         this.text = text;
+        this.id = id;
         this.timeStamp = timeStamp;
         this.downloads = downloads;
     }

@@ -5,7 +5,6 @@ package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Context;
 import android.util.Log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,6 +13,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.Instant;
+import javax.xml.ws.Response;
+import jdk.nashorn.internal.codegen.CompilerConstants.Call;
+import sun.rmi.runtime.Log;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -39,6 +42,26 @@ public class QuestionManager implements Serializable {
 
     // Stores this QuestionManager's instance, to make it a singleton
     public static QuestionManager instance;
+        String[] questionText = {
+                "Who is most likely to sell off all their belongings to charity and become a monk in Nepal?",
+                "Who will be dead in 5 years?",
+                "Who would you rather be stranded on a desert island with?",
+                "Who would be most likely to go to a grocery store and buy eight dozen eggs?",
+                "Who has the best smile?",
+                "Who makes the best food?",
+                "Who is most likely to wake up hungover on a cruise ship they didn't buy a ticket for?",
+                "If you had to wear someone else's eyebrows as a mustache, whose eyebrows would you choose?",
+                "Who could find the best deal online?",
+                "Who is probably on an FBI watchlist?",
+                "Who would make a good guest appearance on Ellen?",
+                "Who is the most responsible?",
+                "Which person is secretly an alien?",
+                "Who would die first in a horror movie?",
+                "Who has the worst luck?",
+                "Who is the least responsible person?",
+                "Who would you trust with your darkest secrets?",
+                "Which person deserves to win the lottery?"
+        };
 
     private transient Context context;
 
@@ -63,11 +86,12 @@ public class QuestionManager implements Serializable {
     }
 
     public void addQuestion(String text, boolean local) {
-        Question q = new Question(text, new Date(System.currentTimeMillis()), 0);
-        addQuestionLocally(q);
-        if (!local) {
-            uploadQuestion(q);
-        }
+       Question q = new Question(text, questions.size(), new Date(System.currentTimeMillis()), 0);
+       if (!local) {
+        uploadQuestion(text);
+       } else {
+           addQuestionLocally(q);
+       }
     }
 
     private void addQuestionLocally(Question q) {
@@ -76,15 +100,53 @@ public class QuestionManager implements Serializable {
         saveQuestions();
     }
 
-    // Upload a question to the server
-    private void uploadQuestion(Question q) {
-        // TODO: interface with server
-    }
+   // Upload a question to the server
+   private void uploadQuestion(String text) {
+       Call<Question> call = QuestionClient.getInstance().getService().createQuestion(text);
 
-    // Download a question from the server
-    // Index is some way of finding which question it is in the database
-    private void downloadQuestion(int index) {
-        // TODO: interface with server
+       call.enqueue(new Callback<Question>() {
+           @Override
+           public void onResponse(Call<Question> call, Response<Question> response) {
+               if (response.isSuccessful()) {
+                   // Question questions = response.body();
+                   // Question q = new Question(questions.text, questions.id, questions.timeStamp, questions.downloads);
+                   addQuestionLocally(response.body);
+               }
+           }
+
+           @Override
+           public void onFailure(Call<Question> call, Throwable t) {
+               Log.d("Error", t.getMessage());
+           }
+       });
+   }
+
+    private ArrayList<Question> downloadQuestions() {
+        Call<QuestionList> call = QuestionClient.getInstance().getService().getQuestions();
+
+        call.enqueue(new Callback<QuestionList>() {
+            @Override
+            public void onResponse(Call<QuestionList> call, Response<QuestionList> response) {
+                if (response.isSuccessful()) {
+                    List<Items> LI = response.body().getItems();
+                    ArrayList<Question> returnList = new ArrayList<Question>();
+
+                    for (Items listItems : LI) {
+                        Log.d("Successfull : ", String.valueOf(listItems.getContents()));
+                        Question q = new Question(listItems.getContents(), listItems.getId(), listItems.getTime(), listItems.getDownloads());
+                        if (!questions.contains(q)) {
+                            returnList.add(q);
+                        }
+                    }
+                    return returnList;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<QuestionList> call, Throwable t) {
+                Log.d("MyApp", t.getMessage());
+            }
+        });
     }
 
     public boolean isQuestionDownloaded(Question q) {
@@ -120,9 +182,9 @@ public class QuestionManager implements Serializable {
 
     public ArrayList<Question> fakeGetOnlineQuestions() {
         ArrayList<Question> ret = new ArrayList<Question>();
-        ret.add(new Question("Who could be on broadway?", new Date(System.currentTimeMillis()), 4));
-        ret.add(new Question("Who would sell their brother for a corn chip?", new Date(System.currentTimeMillis() - 14000000 ), 140));
-        ret.add(new Question("Who makes the best jokes?", new Date(System.currentTimeMillis() - 259599 ), 24924));
+        ret.add(new Question("Who could be on broadway?", 99, new Date(System.currentTimeMillis()), 4));
+        ret.add(new Question("Who would sell their brother for a corn chip?", 100, new Date(System.currentTimeMillis() - 14000000 ), 140));
+        ret.add(new Question("Who makes the best jokes?", 101, new Date(System.currentTimeMillis() - 259599 ), 24924));
         return ret;
     }
 

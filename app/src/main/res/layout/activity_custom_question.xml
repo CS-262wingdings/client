@@ -19,7 +19,7 @@
         android:layout_height="197dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="who is..." />
+        android:hint="who is..." />
 
     <Button
         android:id="@+id/Submit"
