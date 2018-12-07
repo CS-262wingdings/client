@@ -1,28 +1,36 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
-import java.awt.Button;
+//import java.awt.Button;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.text.View;
-import javax.xml.ws.Response;
+//import javax.swing.text.View;
+//import javax.xml.ws.Response;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-import jdk.nashorn.internal.codegen.CompilerConstants.Call;
-import sun.rmi.runtime.Log;
+//import jdk.nashorn.internal.codegen.CompilerConstants.Call;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+//import sun.rmi.runtime.Log;
 
 public class DownloadQuestion extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private QuestionManager qm;
     private int sortOption = 0;
+    private boolean questionsReceived;
+    private ArrayList<Question> downloadedQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +48,26 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
 
         LinearLayout layoutParent = findViewById(R.id.download_question_holder);
 
-        generateQuestions(layoutParent);
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                generateQuestions((LinearLayout)findViewById(R.id.download_question_holder));
+            }
+        });
+        t.run();
     }
 
     private void generateQuestions(LinearLayout layoutParent) {
         layoutParent.removeAllViewsInLayout();
 
-        ArrayList<Question> onlineQuestions = qm.fakeGetOnlineQuestions();
+        questionsReceived = false;
+        downloadedQuestions = new ArrayList<>();
+
+        qm.downloadQuestions(DownloadQuestion.this);
+
+        while (!questionsReceived) {
+            ;
+        }
 
         if (sortOption == 0) {
             Comparator<Question> comp = new Comparator<Question>() {
@@ -55,7 +76,7 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
                     return o1.timeStamp.compareTo(o1.timeStamp);
                 }
             };
-            Collections.sort(onlineQuestions, comp);
+            Collections.sort(downloadedQuestions, comp);
         } else {
             Comparator<Question> comp = new Comparator<Question>() {
                 @Override
@@ -63,10 +84,10 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
                     return o1.downloads - (o2.downloads);
                 }
             };
-            Collections.sort(onlineQuestions, comp);
+            Collections.sort(downloadedQuestions, comp);
         }
 
-        for(Question q : onlineQuestions) {
+        for(Question q : downloadedQuestions) {
             Button b = makeButton(q);
             layoutParent.addView(b);
         }
@@ -124,10 +145,22 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
         } else {
             sortOption = 1;
         }
-        generateQuestions((LinearLayout)findViewById(R.id.download_question_holder));
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                generateQuestions((LinearLayout)findViewById(R.id.download_question_holder));
+            }
+        });
+        t.run();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    public void returnList(ArrayList<Question> returnList) {
+        downloadedQuestions = returnList;
+        questionsReceived = true;
     }
 }

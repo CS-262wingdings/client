@@ -5,21 +5,23 @@ package edu.calvin.cs262.wingdings.pigeonpoll;
 
 import android.content.Context;
 import android.util.Log;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.time.Instant;
-import javax.xml.ws.Response;
-import jdk.nashorn.internal.codegen.CompilerConstants.Call;
-import sun.rmi.runtime.Log;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
+
+//import javax.xml.ws.Response;
+
+//import jdk.nashorn.internal.codegen.CompilerConstants.Call;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class QuestionManager implements Serializable {
     // Stores the version for serialization
@@ -94,7 +96,7 @@ public class QuestionManager implements Serializable {
        }
     }
 
-    private void addQuestionLocally(Question q) {
+    void addQuestionLocally(Question q) {
         questions.add(q);
         enabledQuestions.add(q);
         saveQuestions();
@@ -110,7 +112,7 @@ public class QuestionManager implements Serializable {
                if (response.isSuccessful()) {
                    // Question questions = response.body();
                    // Question q = new Question(questions.text, questions.id, questions.timeStamp, questions.downloads);
-                   addQuestionLocally(response.body);
+                   addQuestionLocally(response.body());
                }
            }
 
@@ -121,7 +123,7 @@ public class QuestionManager implements Serializable {
        });
    }
 
-    private ArrayList<Question> downloadQuestions() {
+    void downloadQuestions(final DownloadQuestion dq) {
         Call<QuestionList> call = QuestionClient.getInstance().getService().getQuestions();
 
         call.enqueue(new Callback<QuestionList>() {
@@ -138,7 +140,8 @@ public class QuestionManager implements Serializable {
                             returnList.add(q);
                         }
                     }
-                    return returnList;
+
+                    dq.returnList(returnList);
                 }
             }
 
@@ -180,13 +183,13 @@ public class QuestionManager implements Serializable {
         return askedQuestions;
     }
 
-    public ArrayList<Question> fakeGetOnlineQuestions() {
-        ArrayList<Question> ret = new ArrayList<Question>();
-        ret.add(new Question("Who could be on broadway?", 99, new Date(System.currentTimeMillis()), 4));
-        ret.add(new Question("Who would sell their brother for a corn chip?", 100, new Date(System.currentTimeMillis() - 14000000 ), 140));
-        ret.add(new Question("Who makes the best jokes?", 101, new Date(System.currentTimeMillis() - 259599 ), 24924));
-        return ret;
-    }
+//    public ArrayList<Question> fakeGetOnlineQuestions() {
+//        ArrayList<Question> ret = new ArrayList<Question>();
+//        ret.add(new Question("Who could be on broadway?", 99, new Date(System.currentTimeMillis()), 4));
+//        ret.add(new Question("Who would sell their brother for a corn chip?", 100, new Date(System.currentTimeMillis() - 14000000 ), 140));
+//        ret.add(new Question("Who makes the best jokes?", 101, new Date(System.currentTimeMillis() - 259599 ), 24924));
+//        return ret;
+//    }
 
     private void saveQuestions() {
         try {
@@ -228,7 +231,7 @@ public class QuestionManager implements Serializable {
             };
 
             for(int i = 0; i < questionText.length; i++) {
-                Question q = new Question(questionText[i], new Date(System.currentTimeMillis()), 0);
+                Question q = new Question(questionText[i], 1, new Date(System.currentTimeMillis()), 0);
                 addQuestionLocally(q);
             }
 
