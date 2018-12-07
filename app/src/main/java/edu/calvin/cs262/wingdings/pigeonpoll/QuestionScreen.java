@@ -25,7 +25,7 @@ public class QuestionScreen extends AppCompatActivity {
         setContentView(R.layout.activity_question_screen);
 
         game = Game.getInstance();
-        qManager = QuestionManager.getInstance();
+        qManager = QuestionManager.getInstance(getApplicationContext());
 
         TextView questionPrompt = findViewById(R.id.prompt);
         questionPrompt.setText(game.getCurrentPlayer() + ", Ask a question");

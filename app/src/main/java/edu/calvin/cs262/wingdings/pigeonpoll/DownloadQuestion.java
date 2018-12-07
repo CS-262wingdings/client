@@ -21,13 +21,15 @@ import sun.rmi.runtime.Log;
 
 public class DownloadQuestion extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private QuestionManager qm = QuestionManager.getInstance();
+    private QuestionManager qm;
     private int sortOption = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_question);
+
+        qm = QuestionManager.getInstance(getApplicationContext());
 
         Spinner options = findViewById(R.id.sort_options_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

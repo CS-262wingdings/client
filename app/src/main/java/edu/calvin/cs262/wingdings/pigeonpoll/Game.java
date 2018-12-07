@@ -1,9 +1,11 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
+
     // Stores the names of all players in clockwise order
     ArrayList<String> names;
 
