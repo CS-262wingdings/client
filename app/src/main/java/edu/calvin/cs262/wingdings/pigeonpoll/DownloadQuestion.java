@@ -1,27 +1,23 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
-
+import java.awt.Button;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import javax.swing.text.View;
+import javax.xml.ws.Response;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
+import jdk.nashorn.internal.codegen.CompilerConstants.Call;
+import sun.rmi.runtime.Log;
 
 public class DownloadQuestion extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -84,7 +80,8 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
             public void onClick(View v) {
                 b.setEnabled(false);
                 Toast.makeText(getApplicationContext(), b.getText() + ": Question Downloaded!", Toast.LENGTH_SHORT).show();
-                qm.addQuestion(b.getText().toString(), true);
+                // qm.addQuestion(b.getText().toString(), true);
+                qm.addQuestionLocally(q);
 
                 // PUT request with index q.
 

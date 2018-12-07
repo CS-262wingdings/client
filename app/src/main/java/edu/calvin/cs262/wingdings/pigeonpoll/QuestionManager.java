@@ -3,27 +3,15 @@
 
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
-import android.net.Network;
-import android.util.Log;
-import android.webkit.ConsoleMessage;
-
-import java.io.Console;
-import java.time.Instant;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
-import java.sql.Timestamp;
+import javax.xml.ws.Response;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
+import jdk.nashorn.internal.codegen.CompilerConstants.Call;
+import sun.rmi.runtime.Log;
 
 public class QuestionManager {
     // Stores all the questions which are in the local question pool
@@ -118,11 +106,12 @@ public class QuestionManager {
     }
 
     public void addQuestion(String text, boolean local) {
-//        Question q = new Question(text, questions.size(), new Date(System.currentTimeMillis()), 0);
-//        addQuestionLocally(q);
-//        if (!local) {
-//            uploadQuestion(text);
-//        }
+       Question q = new Question(text, questions.size(), new Date(System.currentTimeMillis()), 0);
+       if (!local) {
+        uploadQuestion(text);
+       } else {
+           addQuestionLocally(q);
+       }
     }
 
     private void addQuestionLocally(Question q) {
@@ -130,29 +119,28 @@ public class QuestionManager {
         enabledQuestions.add(q);
     }
 
-//    // Upload a question to the server
-//    private void uploadQuestion(String text) {
-//        Call<Question> call = QuestionClient.getInstance().getService().createQuestion(text);
-//
-//        call.enqueue(new Callback<Question>() {
-//            @Override
-//            public void onResponse(Call<Question> call, Response<Question> response) {
-//                if (response.isSuccessful()) {
-////                    Question questions = response.body();
-////                    Question q = new Question(questions.text, questions.id, questions.timeStamp, questions.downloads);
-////                    addQuestionLocally(q);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Question> call, Throwable t) {
-//                Log.d("Error", t.getMessage());
-//            }
-//        });
-//    }
-//
-    private void downloadQuestions() {
+   // Upload a question to the server
+   private void uploadQuestion(String text) {
+       Call<Question> call = QuestionClient.getInstance().getService().createQuestion(text);
 
+       call.enqueue(new Callback<Question>() {
+           @Override
+           public void onResponse(Call<Question> call, Response<Question> response) {
+               if (response.isSuccessful()) {
+                   // Question questions = response.body();
+                   // Question q = new Question(questions.text, questions.id, questions.timeStamp, questions.downloads);
+                   addQuestionLocally(response.body);
+               }
+           }
+
+           @Override
+           public void onFailure(Call<Question> call, Throwable t) {
+               Log.d("Error", t.getMessage());
+           }
+       });
+   }
+
+    private ArrayList<Question> downloadQuestions() {
         Call<QuestionList> call = QuestionClient.getInstance().getService().getQuestions();
 
         call.enqueue(new Callback<QuestionList>() {
@@ -160,13 +148,16 @@ public class QuestionManager {
             public void onResponse(Call<QuestionList> call, Response<QuestionList> response) {
                 if (response.isSuccessful()) {
                     List<Items> LI = response.body().getItems();
+                    ArrayList<Question> returnList = new ArrayList<Question>();
+
                     for (Items listItems : LI) {
                         Log.d("Successfull : ", String.valueOf(listItems.getContents()));
                         Question q = new Question(listItems.getContents(), listItems.getId(), listItems.getTime(), listItems.getDownloads());
                         if (!questions.contains(q)) {
-                            addQuestionLocally(q);
+                            returnList.add(q);
                         }
                     }
+                    return returnList;
                 }
             }
 
@@ -174,7 +165,6 @@ public class QuestionManager {
             public void onFailure(Call<QuestionList> call, Throwable t) {
                 Log.d("MyApp", t.getMessage());
             }
-
         });
     }
 
