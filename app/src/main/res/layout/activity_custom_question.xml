@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".CustomQuestion"
+    android:background="@color/pigeonPollPrimary"
     android:layout_margin="16dp"
     android:layout_gravity="center_vertical"
     android:orientation="vertical">
@@ -22,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="197dp"
         android:ems="10"
+        android:hint="Who is ..."
         android:hint="Who is ..."
         android:inputType="textPersonName" />
 

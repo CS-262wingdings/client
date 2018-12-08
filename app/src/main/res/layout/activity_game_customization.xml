@@ -7,6 +7,7 @@
     android:layout_gravity="center_vertical"
     android:layout_margin="@dimen/standard"
     android:orientation="vertical"
+    android:background="@color/pigeonPollPrimary"
     tools:context=".GameCustomization">
 
     <Button
@@ -35,5 +36,6 @@
         android:text="Manage All Questions"
         android:background="@drawable/border"
         android:layout_marginBottom="@dimen/standard" />
+
 
 </LinearLayout>
