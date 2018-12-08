@@ -3,30 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".CustomQuestion"
+    android:layout_margin="16dp"
+    android:layout_gravity="center_vertical"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/instructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter a new question:" />
+        android:textSize="16dp"
+        android:layout_marginBottom="@dimen/standard"
+        android:text="  Enter a new question:" />
 
     <EditText
         android:id="@+id/entryField"
         android:layout_width="match_parent"
         android:layout_height="197dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="who is..." />
+        android:hint="Who is ..."
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/Submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:onClick="newQuestion"/>
+        android:onClick="newQuestion"
+        android:background="@drawable/border"
+        android:layout_margin="@dimen/standard"/>
 
     <CheckBox
         android:id="@+id/uploadOption"
@@ -38,5 +44,7 @@
         android:id="@+id/gotoQuestionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="See All Questions" />
+        android:text="See All Questions"
+        android:background="@drawable/border"
+        android:layout_margin="@dimen/standard"/>
 </LinearLayout>

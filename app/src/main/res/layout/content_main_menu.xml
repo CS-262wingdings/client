@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainMenu"
+    android:layout_height="wrap_content"
     android:background="@color/pigeonPollTeal"
     android:orientation="vertical"
     android:padding="@dimen/standard"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainMenu"
+    android:layout_gravity="center_vertical"
     tools:showIn="@layout/activity_main_menu">
 
 
@@ -17,21 +18,19 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".8"
         android:layout_margin="@dimen/standard"
         android:background="@drawable/border"
-        android:textStyle="bold"
         android:onClick="StartGame"
-        android:text="Start Game" />
+        android:text="Start Game"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/customizeGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".2"
         android:layout_margin="@dimen/standard"
-        android:onClick="customizeGame"
         android:background="@drawable/border"
-        android:textStyle="bold"
-        android:text="Customize Game" />
+        android:onClick="customizeGame"
+        android:text="Customize Game"
+        android:textStyle="bold" />
 </LinearLayout>
