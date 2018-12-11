@@ -14,7 +14,7 @@ public interface QuestionService {
     Call<QuestionList> getQuestions();
 
     @POST("game/v1/question")
-    Call<Question> createQuestion(@Field("contents") String text);
+    Call<Items> createQuestion(@Body Items item);
 
     @PUT("game/v1/question/{id}")
     Call<Items> updateDownloads(@Path("id") int id);

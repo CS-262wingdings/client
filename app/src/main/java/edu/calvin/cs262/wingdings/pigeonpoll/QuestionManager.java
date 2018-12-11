@@ -89,7 +89,6 @@ public class QuestionManager implements Serializable {
                if (response.isSuccessful()) {
                    Items responseQuestions = response.body();
                    Question q = new Question(responseQuestions.contents, responseQuestions.id, responseQuestions.time, responseQuestions.downloads);
-//                   Question q = new Question(responseQuestions.getContents(), responseQuestions.getId(), responseQuestions.getTime(), responseQuestions.getDownloads());
                    addQuestionLocally(q);
                }
            }
