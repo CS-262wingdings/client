@@ -72,26 +72,21 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
                 qm.addQuestionLocally(q);
 
                 // PUT request with index q.
+                Call<Items> call = QuestionClient.getInstance().getService().updateDownloads(q.id);
 
-                QuestionClient.getInstance().getService().updateDownloads(q.id);
+                call.enqueue(new Callback<Items>() {
+                    @Override
+                    public void onResponse(Call<Items> call, Response<Items> response) {
+                        if (response.isSuccessful()) {
+                        }
+                        // TODO handle error
+                    }
 
-//                call.enqueue(new Callback<List<Question>>() {
-//                    @Override
-//                    public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
-////                String responseString = "Response: ";
-//                        if (response.isSuccessful()) {
-//                        }
-//                        // TODO handle error
-////                else {
-////                }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<List<Question>> call, Throwable t) {
-//                        // something went completely south (like no internet connection)
-//                        Log.d("Error", t.getMessage());
-//                    }
-//                });
+                    @Override
+                    public void onFailure(Call<Items> call, Throwable t) {
+                        Log.d("Error", t.getMessage());
+                    }
+                });
             }
         });
         if (qm.isQuestionDownloaded(q)) {

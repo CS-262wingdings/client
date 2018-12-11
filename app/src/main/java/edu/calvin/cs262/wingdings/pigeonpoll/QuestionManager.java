@@ -76,22 +76,25 @@ public class QuestionManager implements Serializable {
         saveQuestions();
     }
 
+
    // Upload a question to the server
    private void uploadQuestion(String text) {
-       Call<Question> call = QuestionClient.getInstance().getService().createQuestion(text);
+       Date date = new Date(System.currentTimeMillis());
+       Items item = new Items(text, 1, date, 1);
+       Call<Items> call = QuestionClient.getInstance().getService().createQuestion(item);
 
-       call.enqueue(new Callback<Question>() {
+       call.enqueue(new Callback<Items>() {
            @Override
-           public void onResponse(Call<Question> call, Response<Question> response) {
+           public void onResponse(Call<Items> call, Response<Items> response) {
                if (response.isSuccessful()) {
-                   // Question questions = response.body();
-                   // Question q = new Question(questions.text, questions.id, questions.timeStamp, questions.downloads);
-                   addQuestionLocally(response.body());
+                   Items responseQuestions = response.body();
+                   Question q = new Question(responseQuestions.contents, responseQuestions.id, responseQuestions.time, responseQuestions.downloads);
+                   addQuestionLocally(q);
                }
            }
 
            @Override
-           public void onFailure(Call<Question> call, Throwable t) {
+           public void onFailure(Call<Items> call, Throwable t) {
                Log.d("Error", t.getMessage());
            }
        });
