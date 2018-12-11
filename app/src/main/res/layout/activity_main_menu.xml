@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pigeonPollPrimary"
+    android:background="@drawable/newbg"
     tools:context=".MainMenu">
 
 
-
-    <include layout="@layout/content_main_menu" />
+    <include
+        layout="@layout/content_main_menu" />
 
 </android.support.design.widget.CoordinatorLayout>
