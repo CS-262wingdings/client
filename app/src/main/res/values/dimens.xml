@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="standard">25dp</dimen>
-    <dimen name="textSize1">18dp</dimen>
+    <dimen name="standard">20dp</dimen>
+    <dimen name="textSize1">20dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 </resources>

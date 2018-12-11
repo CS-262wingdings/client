@@ -3,39 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GameCustomization"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_margin="@dimen/standard"
     android:orientation="vertical"
-    android:layout_margin="@dimen/standard">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    android:background="@color/pigeonPollPrimary"
+    tools:context=".GameCustomization">
 
     <Button
         android:id="@+id/NewQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="gotoCustomize"
-        android:text="Make Custom Questions" />
+        android:text="Make Custom Questions"
+        android:background="@drawable/border"
+        android:layout_marginBottom="@dimen/standard"/>
 
     <Button
         android:id="@+id/DownloadQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="downloadQuestions"
         android:text="See Other People's Questions"
-        android:onClick="downloadQuestions"/>
+        android:background="@drawable/border"
+        android:layout_marginBottom="@dimen/standard" />
 
     <Button
         android:id="@+id/ManageQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="manageQuestions"
         android:text="Manage All Questions"
-        android:onClick="manageQuestions"/>
+        android:background="@drawable/border"
+        android:layout_marginBottom="@dimen/standard" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+
 </LinearLayout>
