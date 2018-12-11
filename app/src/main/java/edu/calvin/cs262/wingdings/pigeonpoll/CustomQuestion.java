@@ -1,5 +1,6 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,5 +23,10 @@ public class CustomQuestion extends AppCompatActivity {
             qm.addQuestion(entry.getText().toString(), online.isChecked());
             entry.setText("");
         }
+    }
+
+    public void otherQuestions(View view) {
+        Intent i = new Intent(this, DownloadQuestion.class);
+        startActivity(i);
     }
 }
