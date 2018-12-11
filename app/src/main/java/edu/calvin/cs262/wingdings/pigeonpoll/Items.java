@@ -19,6 +19,13 @@ public class Items {
         @Expose
         private String contents;
 
+        public Items(String text, int id, Date date, int downloads) {
+            this.contents = text;
+            this.time = date;
+            this.id = id;
+            this.downloads = downloads;
+        }
+
         public Date getTime() {
             return time;
         }

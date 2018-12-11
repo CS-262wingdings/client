@@ -88,7 +88,7 @@ public class QuestionManager implements Serializable {
            public void onResponse(Call<Items> call, Response<Items> response) {
                if (response.isSuccessful()) {
                    Items responseQuestions = response.body();
-                   Question q = new Question(responseQuestions.contents, responseQuestions.id, responseQuestions.time, responseQuestions.downloads);
+                   Question q = new Question(responseQuestions.getContents(), responseQuestions.getId(), responseQuestions.getTime(), responseQuestions.getDownloads());
                    addQuestionLocally(q);
                }
            }
@@ -113,9 +113,9 @@ public class QuestionManager implements Serializable {
                     for (Items listItems : LI) {
                         Log.d("Successfull : ", String.valueOf(listItems.getContents()));
                         Question q = new Question(listItems.getContents(), listItems.getId(), listItems.getTime(), listItems.getDownloads());
-                        if (!questions.contains(q)) {
+//                        if (!questions.contains(q)) {
                             returnList.add(q);
-                        }
+//                        }
                     }
 
                     dq.returnList(returnList);
