@@ -24,7 +24,6 @@
         android:layout_height="197dp"
         android:ems="10"
         android:hint="Who is ..."
-        android:hint="Who is ..."
         android:inputType="textPersonName" />
 
     <Button
