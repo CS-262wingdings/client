@@ -92,7 +92,16 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
         if (qm.isQuestionDownloaded(q)) {
             b.setEnabled(false);
         }
+//
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT );
+
+
         b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
+
+        params.setMargins(15, 10, 15, 10);
+
+        b.setLayoutParams(params);
+
 
         return b;
     }

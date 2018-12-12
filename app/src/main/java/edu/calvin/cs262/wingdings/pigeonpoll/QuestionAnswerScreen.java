@@ -49,7 +49,14 @@ public class QuestionAnswerScreen extends AppCompatActivity {
         });
 
         b.setText(name);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
         b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
+        params.setMargins(15, 5, 15, 25);
+
+
+        b.setLayoutParams(params);
 
         return b;
     }

@@ -47,15 +47,16 @@ public class ManageQuestions extends AppCompatActivity {
 
             Button closeButton = makeCloseButton(questionLayout, q);
 
-            questionLayout.addView(b);
-            questionLayout.addView(closeButton);
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.weight = 0.0f;
-            params.gravity = Gravity.CENTER_VERTICAL;
+            questionLayout.addView(closeButton);
+            questionLayout.addView(b);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+//            params.weight = 0.0f;
+//            params.gravity = Gravity.CENTER_VERTICAL;
 
             questionLayout.setLayoutParams(params);
-            questionLayout.setPadding(15, 25, 15, 25);
+            questionLayout.setPadding(1, 25, 15, 25);
 
             layoutParent.addView(questionLayout);
         }
@@ -65,7 +66,7 @@ public class ManageQuestions extends AppCompatActivity {
         final Button closeButton = new Button(this);
 
         if (qm.isQuestionEnabled(q)) {
-            closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.check));
+            closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.checkmark));
         } else {
             closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.delete));
         }
@@ -81,12 +82,6 @@ public class ManageQuestions extends AppCompatActivity {
             }
         });
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.weight = 0.0f;
-        params.gravity = Gravity.CENTER_VERTICAL;
-
-        closeButton.setWidth(50);
-        closeButton.setHeight(50);
 
         return closeButton;
     }
@@ -108,10 +103,12 @@ public class ManageQuestions extends AppCompatActivity {
             }
         });
 
-        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.weight = 1.0f;
+        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
+        params.setMargins(15, 5, 15, 25);
+
+
 
         b.setLayoutParams(params);
 
