@@ -1,52 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".CustomQuestion"
-    android:background="@color/pigeonPollPrimary"
-    android:layout_margin="16dp"
-    android:layout_gravity="center_vertical"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
-    <TextView
-        android:id="@+id/instructions"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:layout_marginBottom="@dimen/standard"
-        android:text="  Enter a new question:" />
+        tools:context=".CustomQuestion"
+        android:background="@color/pigeonPollPrimary"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/entryField"
-        android:layout_width="match_parent"
-        android:layout_height="197dp"
-        android:ems="10"
-        android:hint="Who is ..."
-        android:inputType="textPersonName" />
+        <TextView
+            android:id="@+id/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginBottom="@dimen/standard"
+            android:text="  Enter a new question:" />
 
-    <Button
-        android:id="@+id/Submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:onClick="newQuestion"
-        android:background="@drawable/border"
-        android:layout_margin="@dimen/standard"/>
+        <EditText
+            android:id="@+id/entryField"
+            android:layout_width="match_parent"
+            android:layout_height="197dp"
+            android:ems="10"
+            android:hint="Who is ..."
+            android:inputType="textPersonName" />
 
-    <CheckBox
-        android:id="@+id/uploadOption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload to the internet for other players to use" />
+        <Button
+            android:id="@+id/Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:onClick="newQuestion"
+            android:background="@drawable/border"
+            android:layout_margin="@dimen/standard"/>
 
-    <Button
-        android:id="@+id/gotoQuestionList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="See All Questions"
-        android:background="@drawable/border"
-        android:layout_margin="@dimen/standard"
-        android:onClick="otherQuestions"/>
-</LinearLayout>
+        <CheckBox
+            android:id="@+id/uploadOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload to the internet for other players to use" />
+
+        <Button
+            android:id="@+id/gotoQuestionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="See All Questions"
+            android:background="@drawable/border"
+            android:layout_margin="@dimen/standard"/>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

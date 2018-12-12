@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:padding="@dimen/standard"
     android:background="@drawable/lastpersonbg"
-    tools:context=".QuestionAnswerScreen">
+    tools:context=".QuestionAnswerScreen"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/question_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="24dp"
         android:textColor="@color/colorPrimaryDark" />
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,7 +35,8 @@
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
             android:id="@+id/name_list"
             android:orientation="vertical"
             tools:context=".QuestionAnswerScreen">
@@ -31,5 +45,10 @@
 
     </ScrollView>
 
+</LinearLayout>
+
+
 
 </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
