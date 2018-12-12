@@ -1,5 +1,9 @@
 package edu.calvin.cs262.wingdings.pigeonpoll;
 
+import android.annotation.TargetApi;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +28,7 @@ public class ManageQuestions extends AppCompatActivity {
     private QuestionManager qm;
     private LinearLayout layoutParent;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,7 @@ public class ManageQuestions extends AppCompatActivity {
         showQuestions();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showQuestions() {
         layoutParent.removeAllViewsInLayout();
 
@@ -47,7 +53,6 @@ public class ManageQuestions extends AppCompatActivity {
 
             Button closeButton = makeCloseButton(questionLayout, q);
 
-
             questionLayout.addView(closeButton);
             questionLayout.addView(b);
 
@@ -56,29 +61,39 @@ public class ManageQuestions extends AppCompatActivity {
 //            params.gravity = Gravity.CENTER_VERTICAL;
 
             questionLayout.setLayoutParams(params);
-            questionLayout.setPadding(1, 25, 15, 25);
+            questionLayout.setPadding(1, 10, 15, 10);
+
+            closeButton.setHeight(5);
+            closeButton.setWidth(5);
 
             layoutParent.addView(questionLayout);
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private Button makeCloseButton(final LinearLayout nameView, final Question q) {
         final Button closeButton = new Button(this);
 
         if (qm.isQuestionEnabled(q)) {
-            closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.checkmark));
+            //closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.checkmark));
+
         } else {
-            closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.delete));
+
         }
+        //closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.delete));
+        closeButton.setText("delete");
+        closeButton.setTextColor(Color.RED);
+        closeButton.setTextSize(15);
+        //}
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!qm.isQuestionEnabled(q)) {
+                //if (!qm.isQuestionEnabled(q)) {
                     layoutParent.removeView(nameView);
                     qm.deleteQuestion(q);
                     showQuestions();
-                }
+                //}
             }
         });
 
@@ -91,7 +106,16 @@ public class ManageQuestions extends AppCompatActivity {
         final Button b = new Button(this);
 
         b.setText(q.text);
+        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
+
+        if (qm.isQuestionEnabled(q)) {
+            b.setTextColor(Color.BLACK);
+        } else {
+            b.setTextColor(Color.argb(60, 0, 0, 0));
+        }
+
         b.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
                 if (qm.isQuestionEnabled(q)) {
@@ -105,7 +129,6 @@ public class ManageQuestions extends AppCompatActivity {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        b.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.border));
         params.setMargins(15, 5, 15, 25);
 
 
