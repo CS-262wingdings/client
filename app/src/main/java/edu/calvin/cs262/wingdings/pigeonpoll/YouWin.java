@@ -85,7 +85,7 @@ public class YouWin extends AppCompatActivity {
             allNames.addView(newName);
         }
 
-        if(secondPlace != null) {
+        if(secondPlace != null && secondPlace.size() != 0) {
             TextView SecondPlace = new TextView(this);
             SecondPlace.setText("Second Place (" + score2 + " points)");
             allNames.addView(SecondPlace);
@@ -97,9 +97,13 @@ public class YouWin extends AppCompatActivity {
                 newName.setTextColor(Color.BLACK);
                 allNames.addView(newName);
             }
+        }else{
+            TextView SecondPlace = new TextView(this);
+            SecondPlace.setText("No second place - everyone tied!");
+            allNames.addView(SecondPlace);
         }
 
-        if(thirdPlace != null) {
+        if(thirdPlace != null && thirdPlace.size() != 0) {
             TextView ThirdPlace = new TextView(this);
             ThirdPlace.setText("Third Place (" + score3 + " points)");
             allNames.addView(ThirdPlace);
@@ -111,6 +115,10 @@ public class YouWin extends AppCompatActivity {
                 newName.setTextColor(Color.BLACK);
                 allNames.addView(newName);
             }
+        }else if(thirdPlace.size() != 0){
+            TextView ThirdPlace = new TextView(this);
+            ThirdPlace.setText("Nobody is in third place.");
+            allNames.addView(ThirdPlace);
         }
     }
 

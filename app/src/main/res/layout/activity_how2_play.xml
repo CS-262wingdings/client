@@ -67,7 +67,7 @@
         android:id="@+id/answer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The last player tries to guess the answer that got the most votes."
+        android:text="The last player tries to guess the answer that got the most votes.\n\nThe more votes they predict, the more points they get.\n If no votes were given to their answer, everyone else gets a point."
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintTop_toBottomOf="@id/answer" />
 

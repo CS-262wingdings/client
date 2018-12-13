@@ -2,7 +2,7 @@
     <string name="app_name">pigeonPoll</string>
     <string name="titleText">Hello PigeonPoll</string>
     <string name="question_select_text">Select a Question:</string>
-    <string name="my_question_text">I Asked My Own Question</string>
+    <string name="my_question_text">I Asked My Own Question Aloud</string>
     <string name="phonepassMessage">Please pass the phone to</string>
     <string name="empty_name">name</string>
     <string name="thatsMe">That\'s Me!</string>
