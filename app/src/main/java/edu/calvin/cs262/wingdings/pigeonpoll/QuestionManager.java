@@ -58,8 +58,6 @@ public class QuestionManager implements Serializable {
         askedQuestions = new ArrayList<Question>();
 
         random = new Random();
-
-        loadQuestions(false);
     }
 
     /**
@@ -71,6 +69,7 @@ public class QuestionManager implements Serializable {
     public static QuestionManager getInstance(Context context) {
         if (instance == null) {
             instance = new QuestionManager(context);
+            instance.loadQuestions();
         }
         return instance;
     }
@@ -89,6 +88,7 @@ public class QuestionManager implements Serializable {
            addQuestionLocally(q);
        }
     }
+
 
     /**
      * Add question locally.
@@ -181,18 +181,30 @@ public class QuestionManager implements Serializable {
         askedQuestions.add(q);
     }
 
-    public ArrayList<Question> getAskedQuestions() {
-        return askedQuestions;
+    public void resetQuestions() {
+        askedQuestions = new ArrayList<Question>();
+
+        for (Question q : questions) {
+            if (usedQuestions.contains(q)) {
+                enableQuestion(q);
+            }
+        }
+
+        usedQuestions = new ArrayList<Question>();
     }
 
     private void saveQuestions() {
         try {
             ObjectOutputStream out = new ObjectOutputStream(context.openFileOutput("questions.sav", Context.MODE_PRIVATE));
-            out.writeObject(this);
+            out.writeObject(instance);
             out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void loadQuestions() {
+        loadQuestions(false);
     }
 
     private void loadQuestions(boolean corrupted) {
@@ -258,7 +270,9 @@ public class QuestionManager implements Serializable {
 
         try {
             ObjectInputStream in = new ObjectInputStream(context.openFileInput("questions.sav"));
-            instance = (QuestionManager)in.readObject();
+            QuestionManager qm = (QuestionManager)in.readObject();
+            setQuestions(qm.questions);
+            setEnabledQuestions(qm.getEnabledQuestions());
             in.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -271,22 +285,34 @@ public class QuestionManager implements Serializable {
         }
     }
 
-    public boolean isQuestionEnabled(Question q) {
+    private ArrayList<Question> getEnabledQuestions() {
+        return enabledQuestions;
+    }
+
+    boolean isQuestionEnabled(Question q) {
         return enabledQuestions.contains(q);
     }
 
-    public void disableQuestion(Question q) {
+    void disableQuestion(Question q) {
         enabledQuestions.remove(q);
         saveQuestions();
     }
 
-    public void enableQuestion(Question q) {
+    void enableQuestion(Question q) {
         enabledQuestions.add(q);
         saveQuestions();
     }
 
-    public void deleteQuestion(Question q) {
+    void deleteQuestion(Question q) {
         questions.remove(q);
         saveQuestions();
+    }
+
+    private void setQuestions(ArrayList<Question> otherQuestions) {
+        this.questions = otherQuestions;
+    }
+
+    private void setEnabledQuestions(ArrayList<Question> otherQuestions) {
+        this.enabledQuestions = otherQuestions;
     }
 }
