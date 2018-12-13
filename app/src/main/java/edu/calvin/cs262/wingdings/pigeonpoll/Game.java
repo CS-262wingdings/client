@@ -100,7 +100,7 @@ public class Game {
         if(votePoints == 0){
             for(int i = 0; i < names.size(); i ++){
                 if(names.get(i) != getCurrentPlayer()){
-                    if (points.containsKey(i)) {
+                    if (points.containsKey(names.get(i))) {
                         points.put(names.get(i), points.get(names.get(i)) + 1);
                     } else {
                         points.put(names.get(i), 1);
