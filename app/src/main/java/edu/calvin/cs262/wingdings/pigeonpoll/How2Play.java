@@ -13,6 +13,11 @@ public class How2Play extends AppCompatActivity {
         setContentView(R.layout.activity_how2_play);
     }
 
+    /**
+     * Go to game.
+     *
+     * @param view the view
+     */
     public void goToGame(View view) {
         startActivity(new Intent(this,MainActivity.class));
     }

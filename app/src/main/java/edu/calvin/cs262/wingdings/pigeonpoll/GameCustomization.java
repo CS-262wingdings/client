@@ -13,11 +13,26 @@ public class GameCustomization extends AppCompatActivity {
         setContentView(R.layout.activity_game_customization);
     }
 
+    /**
+     * Goto customize.
+     *
+     * @param view the view
+     */
     public void gotoCustomize(View view) {
         startActivity(new Intent(this,CustomQuestion.class));
     }
 
+    /**
+     * Download questions.
+     *
+     * @param view the view
+     */
     public void downloadQuestions(View view) {startActivity(new Intent(this,DownloadQuestion.class));}
 
+    /**
+     * Manage questions.
+     *
+     * @param view the view
+     */
     public void manageQuestions(View view) {startActivity(new Intent(this,ManageQuestions.class));}
 }

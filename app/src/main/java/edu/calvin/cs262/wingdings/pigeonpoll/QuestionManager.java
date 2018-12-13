@@ -18,6 +18,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Question manager.
+ */
 public class QuestionManager implements Serializable {
     // Stores the version for serialization
     private static final long serialVersionUID = 3L;
@@ -41,6 +44,11 @@ public class QuestionManager implements Serializable {
 
     private transient Context context;
 
+    /**
+     * Instantiates a new Question manager.
+     *
+     * @param context the context
+     */
     public QuestionManager(Context context)  {
         this.context = context;
 
@@ -54,6 +62,12 @@ public class QuestionManager implements Serializable {
         loadQuestions(false);
     }
 
+    /**
+     * Gets instance.
+     *
+     * @param context the context
+     * @return the instance
+     */
     public static QuestionManager getInstance(Context context) {
         if (instance == null) {
             instance = new QuestionManager(context);
@@ -61,6 +75,12 @@ public class QuestionManager implements Serializable {
         return instance;
     }
 
+    /**
+     * Add question.
+     *
+     * @param text   the text
+     * @param online the online
+     */
     public void addQuestion(String text, boolean online) {
        Question q = new Question(text, questions.size(), new Date(System.currentTimeMillis()), 0);
        if (online) {
@@ -70,6 +90,11 @@ public class QuestionManager implements Serializable {
        }
     }
 
+    /**
+     * Add question locally.
+     *
+     * @param q the q
+     */
     void addQuestionLocally(Question q) {
         questions.add(q);
         enabledQuestions.add(q);

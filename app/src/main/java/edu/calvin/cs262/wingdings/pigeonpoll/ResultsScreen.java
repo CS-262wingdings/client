@@ -9,6 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+/**
+ * The type Results screen.
+ */
 public class ResultsScreen extends AppCompatActivity {
 
     private Game game;
@@ -71,6 +74,11 @@ public class ResultsScreen extends AppCompatActivity {
 
     }
 
+    /**
+     * Next round.
+     *
+     * @param view the view
+     */
     public void nextRound(View view) {
         if (game.isGameOver()) {
             Intent i = new Intent(this, YouWin.class);

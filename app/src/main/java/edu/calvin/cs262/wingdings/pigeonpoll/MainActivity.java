@@ -12,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -27,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         nameList = (LinearLayout)findViewById(R.id.name_list);
     }
 
+    /**
+     * Name enter.
+     *
+     * @param view the view
+     */
     public void nameEnter(View view) {
         EditText nameInput = findViewById(R.id.name_input);
         String input = nameInput.getText().toString();
@@ -62,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Done.
+     *
+     * @param view the view
+     */
     public void done(View view) {
         if (game.names.size() > 2) {
             Intent i = new Intent(this, QuestionScreen.class);

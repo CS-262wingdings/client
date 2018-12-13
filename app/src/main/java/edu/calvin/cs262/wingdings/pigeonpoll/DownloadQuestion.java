@@ -25,6 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 //import sun.rmi.runtime.Log;
 
+/**
+ * The type Download question.
+ */
 public class DownloadQuestion extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private QuestionManager qm;
@@ -150,6 +153,11 @@ public class DownloadQuestion extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+    /**
+     * Return list.
+     *
+     * @param returnList the return list
+     */
     public void returnList(ArrayList<Question> returnList) {
         downloadedQuestions = returnList;
         questionsReceived = true;

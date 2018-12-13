@@ -8,6 +8,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+/**
+ * The type Splash activity.
+ */
 public class SplashActivity extends AppCompatActivity {
 
     Button startbtn;

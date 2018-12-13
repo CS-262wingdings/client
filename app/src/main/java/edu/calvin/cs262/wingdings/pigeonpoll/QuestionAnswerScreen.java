@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * The type Question answer screen.
+ */
 public class QuestionAnswerScreen extends AppCompatActivity {
 
     private String question;
@@ -61,6 +64,9 @@ public class QuestionAnswerScreen extends AppCompatActivity {
         return b;
     }
 
+    /**
+     * Next turn.
+     */
     public void nextTurn(){
         Intent i = new Intent(this, PassScreen1.class);
         startActivity(i);

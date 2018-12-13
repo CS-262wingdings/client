@@ -7,6 +7,9 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * The type Question client.
+ */
 public class QuestionClient {
     private static final String BASE_URL = "https://phonic-biplane-221307.appspot.com/";
     private static QuestionClient service;
@@ -25,6 +28,11 @@ public class QuestionClient {
                 .build();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static synchronized QuestionClient getInstance() {
         if (service == null) {
             service = new QuestionClient() {
@@ -33,6 +41,11 @@ public class QuestionClient {
         return service;
     }
 
+    /**
+     * Gets service.
+     *
+     * @return the service
+     */
     public QuestionService getService() {
         return retrofit.create(QuestionService.class);
     }
