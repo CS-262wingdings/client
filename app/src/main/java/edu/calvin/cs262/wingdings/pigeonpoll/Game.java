@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The type Game.
+ */
 public class Game {
 
     // Stores the names of all players in clockwise order
@@ -53,25 +56,46 @@ public class Game {
         instance = new Game(1);
     }
 
+    /**
+     * Add name.
+     *
+     * @param name the name
+     */
     void addName(String name) {
         names.add(name);
         points.put(name, 0);
     }
 
+    /**
+     * End turn.
+     */
     public void endTurn() {
         votesPerPlayer = new HashMap<String, Integer>();
         firstPlayer = currentPlayer;
     }
 
+    /**
+     * End round.
+     */
     public void endRound()
     {
         roundsPlayed++;
     }
 
+    /**
+     * Is game over boolean.
+     *
+     * @return the boolean
+     */
     public boolean isGameOver() {
         return (roundsPlayed >= rounds);
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static Game getInstance() {
         if (instance == null) {
             instance = new Game(1);
@@ -79,6 +103,11 @@ public class Game {
         return instance;
     }
 
+    /**
+     * Vote for question.
+     *
+     * @param playerName the player name
+     */
     public void voteForQuestion(String playerName) {
         if(votesPerPlayer.containsKey(playerName)) {
             votesPerPlayer.put(playerName, votesPerPlayer.get(playerName) + 1);
@@ -88,6 +117,11 @@ public class Game {
         currentPlayer = (currentPlayer + 1 + names.size()) % names.size();
     }
 
+    /**
+     * Vote for player.
+     *
+     * @param playerName the player name
+     */
     public void voteForPlayer(String playerName) {
         votePoints = (votesPerPlayer.containsKey(playerName)) ? votesPerPlayer.get(playerName) : 0 ;
 
@@ -110,22 +144,49 @@ public class Game {
         }
     }
 
+    /**
+     * Gets current player.
+     *
+     * @return the current player
+     */
     String getCurrentPlayer() {
         return names.get(currentPlayer);
     }
 
+    /**
+     * Set question.
+     *
+     * @param q the q
+     */
     public void setQuestion(String q){
         currentQuestion = q;
     }
 
+    /**
+     * Is last player boolean.
+     *
+     * @return the boolean
+     */
     public boolean isLastPlayer() {
         return ((currentPlayer + names.size() + 1) % names.size() == firstPlayer);
     }
 
+    /**
+     * Gets points.
+     *
+     * @param playerNum the player num
+     * @return the points
+     */
     public int getPoints(int playerNum) {
         return points.get(names.get(playerNum));
     }
 
+    /**
+     * Gets round points.
+     *
+     * @param playerNum the player num
+     * @return the round points
+     */
     public int getRoundPoints(int playerNum) {
         return (votesPerPlayer.get(names.get(playerNum)) == null) ? 0 : votesPerPlayer.get(names.get(playerNum));
     }

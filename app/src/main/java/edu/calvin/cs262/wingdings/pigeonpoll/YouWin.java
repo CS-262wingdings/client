@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
 
+/**
+ * The type You win.
+ */
 public class YouWin extends AppCompatActivity {
 
     LinearLayout allNames;
@@ -122,6 +125,11 @@ public class YouWin extends AppCompatActivity {
         }
     }
 
+    /**
+     * New round.
+     *
+     * @param view the view
+     */
     public void newRound(View view){
         game.rounds += 1;
         Intent i = new Intent(this, QuestionScreen.class);
@@ -129,6 +137,11 @@ public class YouWin extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Confirm.
+     *
+     * @param view the view
+     */
     public void confirm(View view) {
         Intent i = new Intent(this, MainMenu.class);
         startActivity(i);

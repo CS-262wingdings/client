@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+/**
+ * The type Custom question.
+ */
 public class CustomQuestion extends AppCompatActivity {
 
     @Override
@@ -15,6 +18,11 @@ public class CustomQuestion extends AppCompatActivity {
         setContentView(R.layout.activity_custom_question);
     }
 
+    /**
+     * New question.
+     *
+     * @param view the view
+     */
     public void newQuestion(View view) {
         EditText entry = findViewById(R.id.entryField);
         if (!entry.getText().toString().equals("") && !entry.getText().toString().equals("")) {
@@ -25,6 +33,11 @@ public class CustomQuestion extends AppCompatActivity {
         }
     }
 
+    /**
+     * Other questions.
+     *
+     * @param view the view
+     */
     public void otherQuestions(View view) {
         Intent i = new Intent(this, DownloadQuestion.class);
         startActivity(i);

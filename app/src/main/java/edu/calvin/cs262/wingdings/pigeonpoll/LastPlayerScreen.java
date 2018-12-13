@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * The type Last player screen.
+ */
 public class LastPlayerScreen extends AppCompatActivity {
 
     private Game game;

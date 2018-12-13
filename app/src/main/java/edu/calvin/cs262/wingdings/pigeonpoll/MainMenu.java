@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * The type Main menu.
+ */
 public class MainMenu extends AppCompatActivity {
 
     @Override
@@ -18,11 +21,21 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
+    /**
+     * Start game.
+     *
+     * @param view the view
+     */
     public void StartGame(View view) {
         startActivity(new Intent(this,How2Play.class));
     }
 
 
+    /**
+     * Customize game.
+     *
+     * @param view the view
+     */
     public void customizeGame(View view) {
         startActivity(new Intent(this,GameCustomization.class));
     }

@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+/**
+ * The type Items.
+ */
 public class Items {
         @SerializedName("time")
         @Expose
@@ -19,42 +22,90 @@ public class Items {
         @Expose
         private String contents;
 
-        public Items(String text, int id, Date date, int downloads) {
+    /**
+     * Instantiates a new Items.
+     *
+     * @param text      the text
+     * @param id        the id
+     * @param date      the date
+     * @param downloads the downloads
+     */
+    public Items(String text, int id, Date date, int downloads) {
             this.contents = text;
             this.time = date;
             this.id = id;
             this.downloads = downloads;
         }
 
-        public Date getTime() {
+    /**
+     * Gets time.
+     *
+     * @return the time
+     */
+    public Date getTime() {
             return time;
         }
 
-        public void setTime(Date time) {
+    /**
+     * Sets time.
+     *
+     * @param time the time
+     */
+    public void setTime(Date time) {
             this.time = time;
         }
 
-        public Integer getId() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public Integer getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(Integer id) {
             this.id = id;
         }
 
-        public Integer getDownloads() {
+    /**
+     * Gets downloads.
+     *
+     * @return the downloads
+     */
+    public Integer getDownloads() {
             return downloads;
         }
 
-        public void setDownloads(Integer downloads) {
+    /**
+     * Sets downloads.
+     *
+     * @param downloads the downloads
+     */
+    public void setDownloads(Integer downloads) {
             this.downloads = downloads;
         }
 
-        public String getContents() {
+    /**
+     * Gets contents.
+     *
+     * @return the contents
+     */
+    public String getContents() {
             return contents;
         }
 
-        public void setContents(String contents) {
+    /**
+     * Sets contents.
+     *
+     * @param contents the contents
+     */
+    public void setContents(String contents) {
             this.contents = contents;
         }
     }

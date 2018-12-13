@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * The type Question screen.
+ */
 public class QuestionScreen extends AppCompatActivity {
 
     private static int NUM_OPTIONS = 3;
@@ -38,6 +41,11 @@ public class QuestionScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     * My question entered.
+     *
+     * @param view the view
+     */
     public void myQuestionEntered(View view) {
         Intent i = new Intent(this, QuestionAnswerScreen.class);
         //i.putExtra("question", "custom");

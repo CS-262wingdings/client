@@ -23,6 +23,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Manage questions.
+ */
 public class ManageQuestions extends AppCompatActivity {
 
     private QuestionManager qm;
