@@ -39,7 +39,8 @@ public class CustomQuestion extends AppCompatActivity {
      * @param view the view
      */
     public void otherQuestions(View view) {
-        Intent i = new Intent(this, DownloadQuestion.class);
+        Intent i = new Intent(this, ManageQuestions.class);
         startActivity(i);
     }
+
 }

@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:text="See All Questions"
             android:background="@drawable/border"
-            android:layout_margin="@dimen/standard"/>
+            android:layout_margin="@dimen/standard"
+            android:onClick="otherQuestions"/>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

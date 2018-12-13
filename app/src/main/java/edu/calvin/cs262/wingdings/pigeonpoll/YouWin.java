@@ -143,6 +143,7 @@ public class YouWin extends AppCompatActivity {
      * @param view the view
      */
     public void confirm(View view) {
+        QuestionManager.getInstance(this).resetQuestions();
         Intent i = new Intent(this, MainMenu.class);
         startActivity(i);
         finish();
