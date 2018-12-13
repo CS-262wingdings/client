@@ -96,6 +96,18 @@ public class Game {
         } else {
             points.put(getCurrentPlayer(), votePoints);
         }
+
+        if(votePoints == 0){
+            for(int i = 0; i < names.size(); i ++){
+                if(names.get(i) != getCurrentPlayer()){
+                    if (points.containsKey(i)) {
+                        points.put(names.get(i), points.get(names.get(i)) + 1);
+                    } else {
+                        points.put(names.get(i), 1);
+                    }
+                }
+            }
+        }
     }
 
     String getCurrentPlayer() {

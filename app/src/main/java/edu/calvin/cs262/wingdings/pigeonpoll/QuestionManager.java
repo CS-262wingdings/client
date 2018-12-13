@@ -196,7 +196,31 @@ public class QuestionManager implements Serializable {
                     "Who has the worst luck?",
                     "Who is the least responsible person?",
                     "Who would you trust with your darkest secrets?",
-                    "Which person deserves to win the lottery?"
+                    "Which person deserves to win the lottery?",
+                    "Who would raise a baby animal like their child out of the kindness of their own heart?",
+                    "Which person would you switch wardrobes with?",
+                    "Who is most capable of writing the next NYT best seller?",
+                    "Who would be the most intimidating person if they gained 40 pounds of muscle?",
+                    "If you had to choose someone to be the earth's embassador for alien civilizations, who would you volunteer?",
+                    "Who is most able to beat you in a fist fight?",
+                    "Who is most able to beat you in a public debate?",
+                    "Who would look the best in a mullet?",
+                    "Who is the most qualified to use the word y'all unironically?",
+                    "Who throws caution to the wind?",
+                    "Who would be the first to protest an oppressive regime?",
+                    "Who would get famous on the internet for doing something stupid?",
+                    "Who is your evil twin?",
+                    "Pretend that this is a really embarrassing question. Vote for the last player but don't tell them what it is.",
+                    "Who could probably make animals sing like in a Disney Princess movie?",
+                    "Who would look the best in full Victorian English attire? (this includes the top hat)",
+                    "Who has probably blown a blood vessel in their forehead at some point in their life?",
+                    "Who needs a stern talking-to?",
+                    "Who could calm an angry bull with their soothing voice?",
+                    "Who probably likes Circus Peanuts and Necco Wafers, but is too embarrassed to say it?",
+                    "Who would be a good voice actor for a cartoon character?",
+                    "Who would make the most competent fireman/firewoman?",
+                    "Who would benefit from the hippie lifestyle?",
+                    "Who do you suspect has a secret superpower?"
             };
 
             for(int i = 0; i < questionText.length; i++) {

@@ -45,6 +45,7 @@
         android:background="@drawable/border"
         android:onClick="confirm"
         android:text="back to main menu"
+        android:layout_marginTop="5dp"
         android:textStyle="bold" />
 
 </LinearLayout>

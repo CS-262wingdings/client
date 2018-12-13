@@ -82,7 +82,10 @@ public class ManageQuestions extends AppCompatActivity {
         }
         //closeButton.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.delete));
         closeButton.setText("delete");
-        closeButton.setTextColor(Color.RED);
+        closeButton.setTextColor(Color.WHITE);
+        closeButton.setMinHeight(1);
+        closeButton.setMinWidth(1);
+        closeButton.setBackgroundColor(Color.rgb(240,86,88));
         closeButton.setTextSize(15);
         //}
 
@@ -119,8 +122,10 @@ public class ManageQuestions extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (qm.isQuestionEnabled(q)) {
+                    Toast.makeText(getApplicationContext(), "Question Disabled. It will not be suggested during games.", Toast.LENGTH_SHORT).show();
                     qm.disableQuestion(q);
                 } else {
+                    Toast.makeText(getApplicationContext(), "Question Enabled. It will now become part of the game.", Toast.LENGTH_SHORT).show();
                     qm.enableQuestion(q);
                 }
                 showQuestions();
